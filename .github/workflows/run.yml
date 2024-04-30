@@ -30,11 +30,11 @@ jobs:
         env:
           NO_SKIP: true
         run: |
-          mkdir -p ./sing-rule/
+          mkdir -p ./sing-rule/Ruleset
           cp ./workflow/resouces/convert_* ./sing-rule/
           cd sing-rule || exit 1
-          chmod 777 -R ../ACL4SSR/Clash
           python convert_json.py ../ACL4SSR/Clash ./
+          python convert_json.py ../ACL4SSR/Clash/Ruleset ./Ruleset
 
       - name: Convert json to srs
         env:
