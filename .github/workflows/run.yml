@@ -33,7 +33,7 @@ jobs:
           mkdir -p ./sing-rule/
           cp ./workflow/resouces/convert_* ./sing-rule/
           cd sing-rule || exit 1
-          ls -lha ../ACL4SSR/Clash/Ruleset
+          chmod 777 -R ../ACL4SSR/Clash
           python convert_json.py ../ACL4SSR/Clash ./
 
       - name: Convert json to srs
