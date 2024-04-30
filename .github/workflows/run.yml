@@ -33,6 +33,7 @@ jobs:
           mkdir -p ./sing-rule/
           cp ./workflow/resouces/convert_* ./sing-rule/
           cd sing-rule || exit 1
+          ls -lha ../ACL4SSR/Clash/Ruleset
           python convert_json.py ../ACL4SSR/Clash ./
 
       - name: Convert json to srs
@@ -46,21 +47,21 @@ jobs:
 
       - name: Git push assets to "sing-rule" branch
         run: |
-            cd sing-rule || exit 1
-            ls
-            git init
-            git config --local user.name "github-actions[bot]"
-            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git checkout -b sing
-            git add .
-            git commit -m "Released on ${{ env.BUILDTIME }}"
-            git remote add origin "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
-            git push -f -u origin sing
+          cd sing-rule || exit 1
+          ls
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b sing
+          git add .
+          git commit -m "Released on ${{ env.BUILDTIME }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin sing
 
 
-      # - name: Purge jsdelivr CDN
-      #   run: |
-      #     cd publish || exit 1
-      #     for file in $(ls); do
-      #       curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
-      #     done
+      - name: Purge jsdelivr CDN
+        run: |
+          cd sing-rule || exit 1
+          for file in $(ls); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
+          done

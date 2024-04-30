@@ -3,12 +3,22 @@
 - 基于clash规则源文件生成的json和srs规则文件
     - 推荐配合[karing](https://github.com/KaringX/karing)食用更佳
 
+## 下载链接
+### 方案1 github
+- 比如需要国内IP直连, 对应文件为 `ChinaIp.srs`
+- 访问链接:
+https://raw.githubusercontent.com/KaringX/ACL4SSR/sing/ChinaIp.srs
+
+### 方案2 CDN:jsdelivr
+- 比如需要去广告功能, 对应文件为 `BanAD.srs`
+- 访问链接:
+https://fastly.jsdelivr.net/gh/karingX/ACL4SSR@sing/BanAD.srs
+
 ## 规则碎片
 
-主要文件在**sing分支** *Ruleset*文件夹下，可以配合一些订阅转换或者代理工具进行使用。
+- 主要文件在**sing分支**根目录和*Ruleset*文件夹下，可以配合一些订阅转换或者代理工具进行使用。
 
-具体怎么使用需要看对应软件配置是怎么写的，还要请大家阅读你所使用的软件文档，看是否能使用
-
+- 下面是部分文件的注释，所有文件列表查看 [sing分支目录](https://github.com/KaringX/ACL4SSR/tree/sing)
 
 | 文件                   | 类型                 | 解释                                                         |
 | ---------------------- | -------------------- | ------------------------------------------------------------ |
