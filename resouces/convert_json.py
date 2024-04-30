@@ -14,7 +14,7 @@ MAP_RULES_KEY_DICT = {
 
 
 def deug_log(msg: str):
-    # print(msg)
+    print(msg)
     pass
 
 

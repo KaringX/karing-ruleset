@@ -19,7 +19,7 @@ jobs:
           path: workflow
           ref: workflow
 
-      - name: Checkout
+      - name: Checkout ACL4SSR
         uses: actions/checkout@v4
         with:
           repository: ACL4SSR/ACL4SSR
@@ -40,7 +40,7 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-rule || exit 1
-          wget https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box .
+          wget https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box ./
           chmod 755 sing-box convert_srs.sh && ./convert_srs.sh
           rm -rf sing-box* convert_* LICENSE README.md
 

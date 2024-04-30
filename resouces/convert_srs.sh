@@ -18,8 +18,8 @@ cd $target_dir
 # convert
 find . -type f -name "*.json" | while read filename; do
     srs_file=${filename%.json}.srs
-    echo $filename
-    echo $srs_file
+    echo "source << {$filename}"
+    echo "output >> {$srs_file}"
     ./sing-box rule-set compile $filename -o $srs_file
 done
 
