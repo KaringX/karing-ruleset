@@ -1,0 +1,66 @@
+name: Convert ACL4SSR to sing-box rule set
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 22 * * *" # 6:30 AM UTC+8
+  push:
+    branches:
+      - workflow
+    paths-ignore:
+      - "**/README.md"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout scripts
+        uses: actions/checkout@v4
+        with:
+          repository: KaringX/ACL4SSR
+          path: workflow
+          ref: workflow
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ACL4SSR/ACL4SSR
+          path: ACL4SSR
+          ref: master
+
+      - name: Convert json files
+        env:
+          NO_SKIP: true
+        run: |
+          mkdir -p ./sing-rule/
+          cp ./workflow/resouces/convert_* ./sing-rule/
+          cd sing-rule || exit 1
+          python convert_json.py ../ACL4SSR/Clash ./
+
+      - name: Convert json to srs
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-rule || exit 1
+          wget https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box .
+          chmod 755 sing-box convert_srs.sh && ./convert_srs.sh
+          rm -rf sing-box* convert_* LICENSE README.md
+
+      - name: Git push assets to "sing-rule" branch
+        run: |
+            cd sing-rule || exit 1
+            ls
+            git init
+            git config --local user.name "github-actions[bot]"
+            git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git checkout -b sing
+            git add .
+            git commit -m "Released on ${{ env.BUILDTIME }}"
+            git remote add origin "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
+            git push -f -u origin sing
+
+
+      # - name: Purge jsdelivr CDN
+      #   run: |
+      #     cd publish || exit 1
+      #     for file in $(ls); do
+      #       curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
+      #     done
