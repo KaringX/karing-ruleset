@@ -34,14 +34,13 @@ jobs:
           cp ./workflow/resouces/convert_* ./sing-rule/
           cd sing-rule || exit 1
           python convert_json.py ../ACL4SSR/Clash ./
-          python convert_json.py ../ACL4SSR/Clash/Ruleset ./Ruleset
 
       - name: Convert json to srs
         env:
           NO_SKIP: true
         run: |
           cd sing-rule || exit 1
-          wget https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box ./
+          wget -q https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box ./
           chmod 755 sing-box convert_srs.sh && ./convert_srs.sh
           rm -rf sing-box* convert_* LICENSE README.md
 
@@ -63,5 +62,5 @@ jobs:
         run: |
           cd sing-rule || exit 1
           for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
+            curl -i -Ls "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
           done
