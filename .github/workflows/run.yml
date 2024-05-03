@@ -61,8 +61,7 @@ jobs:
       - name: Purge jsdelivr CDN
         run: |
           cd sing-rule || exit 1
-          for file in $(ls * */*); do
-            if [[ $file = *".json" || $file = *".srs" ]]; then
-              curl -i -Ls "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
-            fi
+          find . -type f \( -name "*.json" -o -name "*.srs" \) -printf "%P\n" | while read file; do
+            curl -i -Ls "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
+            echo -e "\t${file} PURGE...\n"
           done
