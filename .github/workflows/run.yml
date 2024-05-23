@@ -2,7 +2,7 @@ name: Convert other rules to sing-box rule set
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 22 * * *" # 6:30 AM UTC+8
+    - cron: "30 06 * * *" # 6:30 AM UTC+8
   push:
     branches:
       - workflow
@@ -58,6 +58,29 @@ jobs:
           git remote add origin "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin sing
 
+      - name: Checkout meta-rules-dat
+        uses: actions/checkout@v4
+        with:
+          repository: MetaCubeX/meta-rules-dat
+          path: meta-rules-dat
+          ref: sing
+
+      - name: Checkout Iran-sing-box-rules
+        uses: actions/checkout@v4
+        with:
+          repository: Chocolate4U/Iran-sing-box-rules
+          path: Iran-sing-box-rules
+          ref: rule-set
+
+      - name: copy geo rules
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-rule || exit 1
+          cp -r ../meta-rules-dat/geo ./
+          cp -r ../Iran-sing-box-rules/geoip-ir.srs ./geo/geoip/ir.srs
+          cp -r ../Iran-sing-box-rules/geosite*ir.srs ./geo/geosite/
+          cd ./geo/geosite/ && find ./ -type f -name "geosite-*ir.srs" -exec bash -c 'mv "$1" "${1/geosite-/}"' _ {} \;
 
       - name: Purge jsdelivr CDN
         run: |
