@@ -83,9 +83,16 @@ jobs:
           git push -f -u origin sing
 
       - name: Purge jsdelivr CDN
+        # find . -type f \( -name "*.json" -o -name "*.srs" \) -printf "%P\n" | while read file; do
+        #   curl -i -Ls "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
+        #   echo -e "\t${file} PURGE...\n"
+        # done
         run: |
-          cd sing-rule || exit 1
-          find . -type f \( -name "*.json" -o -name "*.srs" \) -printf "%P\n" | while read file; do
-            curl -i -Ls "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
-            echo -e "\t${file} PURGE...\n"
+          cd sing-rule/ACL4SSR || exit 1
+          for file in $(ls); do
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
           done
+          curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/ACL4SSR/Ruleset"
+          curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/geo/geoip"
+          curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/geo/geosite"
+
