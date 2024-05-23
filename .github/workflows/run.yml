@@ -44,20 +44,6 @@ jobs:
           chmod 755 sing-box ACL4SSR/convert_srs.sh && ./ACL4SSR/convert_srs.sh ../sing-box
           rm -rf sing-box* LICENSE README.md ACL4SSR/convert_*
 
-      - name: Git push assets to "sing-rule" branch
-        run: |
-          cd sing-rule || exit 1
-          cp ../workflow/README.md .
-          ls
-          git init
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b sing
-          git add .
-          git commit -m "Released on ${{ env.BUILDTIME }}"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
-          git push -f -u origin sing
-
       - name: Checkout meta-rules-dat
         uses: actions/checkout@v4
         with:
@@ -81,6 +67,20 @@ jobs:
           cp -r ../Iran-sing-box-rules/geoip-ir.srs ./geo/geoip/ir.srs
           cp -r ../Iran-sing-box-rules/geosite*ir.srs ./geo/geosite/
           cd ./geo/geosite/ && find ./ -type f -name "geosite-*ir.srs" -exec bash -c 'mv "$1" "${1/geosite-/}"' _ {} \;
+
+      - name: Git push assets to "sing-rule" branch
+        run: |
+          cd sing-rule || exit 1
+          cp ../workflow/README.md .
+          ls
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b sing
+          git add .
+          git commit -m "Released on ${{ env.BUILDTIME }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f -u origin sing
 
       - name: Purge jsdelivr CDN
         run: |
