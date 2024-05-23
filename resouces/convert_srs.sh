@@ -6,6 +6,7 @@ sing_exe=$1
 if [ -z "$sing_exe" ]; then
     sing_exe='./sing-box'
 fi
+sing_exe=$(readlink -f $sing_exe)
 
 target_dir=$2
 if [ -z "$target_dir" ]; then
@@ -25,7 +26,7 @@ echo "finding<= ${target_dir}"
 find . -type f -name "*.json" | while read filename; do
     srs_file=${filename%.json}.srs
     echo "source << ${filename}"
-    sing_exe rule-set compile $filename -o $srs_file
+    $sing_exe rule-set compile $filename -o $srs_file
     echo -e "output >> ${srs_file}\n"
 done
 
