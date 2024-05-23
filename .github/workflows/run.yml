@@ -1,4 +1,4 @@
-name: Convert ACL4SSR to sing-box rule set
+name: Convert other rules to sing-box rule set
 on:
   workflow_dispatch:
   schedule:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout scripts
         uses: actions/checkout@v4
         with:
-          repository: KaringX/ACL4SSR
+          repository: KaringX/karing-ruleset
           path: workflow
           ref: workflow
 
@@ -30,10 +30,10 @@ jobs:
         env:
           NO_SKIP: true
         run: |
-          mkdir -p ./sing-rule/Ruleset
-          cp ./workflow/resouces/convert_* ./sing-rule/
-          cd sing-rule || exit 1
-          python convert_json.py ../ACL4SSR/Clash ./
+          mkdir -p ./sing-rule/ACL4SSR/Ruleset
+          cp ./workflow/resouces/convert_* ./sing-rule/ACL4SSR/
+          cd sing-rule/ACL4SSR/ || exit 1
+          python convert_json.py ../../ACL4SSR/Clash ./
 
       - name: Convert json to srs
         env:
@@ -41,12 +41,13 @@ jobs:
         run: |
           cd sing-rule || exit 1
           wget -q https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box ./
-          chmod 755 sing-box convert_srs.sh && ./convert_srs.sh
-          rm -rf sing-box* convert_* LICENSE README.md
+          chmod 755 sing-box ACL4SSR/convert_srs.sh && ./ACL4SSR/convert_srs.sh
+          rm -rf sing-box* LICENSE README.md ACL4SSR/convert_*
 
       - name: Git push assets to "sing-rule" branch
         run: |
           cd sing-rule || exit 1
+          cp ../workflow/README.md .
           ls
           git init
           git config --local user.name "github-actions[bot]"
