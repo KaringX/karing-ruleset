@@ -6,6 +6,36 @@
 - [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR)
 
 
+# GeoIP/GeoSite
+- The source files of Iran come from **Chocolate4U**
+```
+│
+├──geoip
+│  └── ir.srs
+│
+└── geosite
+    ├── ir.srs
+    ├── category-ads-ir.srs
+    ├── category-bank-ir.srs
+    ├── category-bourse-ir.srs
+    ├── category-education-ir.srs
+    ├── category-forums-ir.srs
+    ├── category-gov-ir.srs
+    ├── category-insurance-ir.srs
+    ├── category-ir.srs
+    ├── category-media-ir.srs
+    ├── category-news-ir.srs
+    ├── category-payment-ir.srs
+    ├── category-scholar-ir.srs
+    ├── category-shopping-ir.srs
+    ├── category-social-media-ir.srs
+    ├── category-tech-ir.srs
+    └── category-travel-ir.srs
+
+```
+
+
+
 # sing-box/karing rule-set规则碎片
 - 基于ACL4SSR和geoip、geosite规则源文件生成的json和srs规则文件
     - 推荐配合[karing](https://github.com/KaringX/karing)食用更佳
