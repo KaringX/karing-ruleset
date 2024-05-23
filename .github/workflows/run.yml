@@ -90,7 +90,7 @@ jobs:
         run: |
           cd sing-rule/ACL4SSR || exit 1
           for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/ACL4SSR/${file}"
           done
           curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/ACL4SSR/Ruleset"
           curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/geo/geoip"
