@@ -2,7 +2,12 @@
 
 CURRENT_DIR=$(cd $(dirname $0); pwd)
 
-target_dir=$1
+sing_exe=$1
+if [ -z "$sing_exe" ]; then
+    sing_exe='./sing-box'
+fi
+
+target_dir=$2
 if [ -z "$target_dir" ]; then
     target_dir=$CURRENT_DIR
 fi
@@ -20,7 +25,7 @@ echo "finding<= ${target_dir}"
 find . -type f -name "*.json" | while read filename; do
     srs_file=${filename%.json}.srs
     echo "source << ${filename}"
-    ./sing-box rule-set compile $filename -o $srs_file
+    sing_exe rule-set compile $filename -o $srs_file
     echo -e "output >> ${srs_file}\n"
 done
 
