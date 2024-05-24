@@ -1,24 +1,61 @@
-# ACL4SSR规则碎片 sing-box rule-set版本
-- fork from https://github.com/ACL4SSR/ACL4SSR
-- 基于clash规则源文件生成的json和srs规则文件
+# rule-set collection for sing-box/karing
+
+## Thanks to
+- [meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo)
+- [Chocolate4U-Iran](https://github.com/Chocolate4U/Iran-sing-box-rules/tree/rule-set?tab=readme-ov-file)
+- [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR)
+
+
+# GeoIP/GeoSite
+- The source files of Iran come from **Chocolate4U**
+```
+│
+├──geoip
+│  └── ir.srs
+│
+└── geosite
+    ├── ir.srs
+    ├── category-ads-ir.srs
+    ├── category-bank-ir.srs
+    ├── category-bourse-ir.srs
+    ├── category-education-ir.srs
+    ├── category-forums-ir.srs
+    ├── category-gov-ir.srs
+    ├── category-insurance-ir.srs
+    ├── category-ir.srs
+    ├── category-media-ir.srs
+    ├── category-news-ir.srs
+    ├── category-payment-ir.srs
+    ├── category-scholar-ir.srs
+    ├── category-shopping-ir.srs
+    ├── category-social-media-ir.srs
+    ├── category-tech-ir.srs
+    └── category-travel-ir.srs
+
+```
+
+
+
+# sing-box/karing rule-set规则碎片
+- 基于ACL4SSR和geoip、geosite规则源文件生成的json和srs规则文件
     - 推荐配合[karing](https://github.com/KaringX/karing)食用更佳
 
 ## 下载链接
 ### 方案1 github
 - 比如需要国内IP直连, 对应文件为 `ChinaIp.srs`
 - 访问链接:
-https://raw.githubusercontent.com/KaringX/ACL4SSR/sing/ChinaIp.srs
+https://raw.githubusercontent.com/KaringX/karing-ruleset/sing/ACL4SSR/ChinaIp.srs
 
 ### 方案2 CDN:jsdelivr
 - 比如需要去广告功能, 对应文件为 `BanAD.srs`
 - 访问链接:
-https://fastly.jsdelivr.net/gh/karingX/ACL4SSR@sing/BanAD.srs
+https://fastly.jsdelivr.net/gh/karingX/karing-ruleset@sing/ACL4SSR/BanAD.srs
 
 ## 规则碎片
 
-- 主要文件在**sing分支**根目录和*Ruleset*文件夹下，可以配合一些订阅转换或者代理工具进行使用。
+- 主要文件在**sing分支**根目录和*ACL4SSR/Ruleset*文件夹下，可以配合一些订阅转换或者代理工具进行使用。
 
-- 下面是部分文件的注释，所有文件列表查看 [sing分支目录](https://github.com/KaringX/ACL4SSR/tree/sing)
+- 下面是部分文件的注释，所有文件列表查看 [sing分支目录](https://github.com/KaringX/karing-ruleset/tree/sing)
 
 | 文件                   | 类型                 | 解释                                                         |
 | ---------------------- | -------------------- | ------------------------------------------------------------ |
