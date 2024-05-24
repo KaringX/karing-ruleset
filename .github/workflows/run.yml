@@ -1,4 +1,4 @@
-tname: Convert other rules to sing-box rule set
+name: Convert other rules to sing-box rule set
 on:
   workflow_dispatch:
   schedule:
