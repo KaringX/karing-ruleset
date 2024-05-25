@@ -2,7 +2,7 @@ name: Convert other rules to sing-box rule set
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 06 * * *" # 6:30 AM UTC+8
+    - cron: "30 14 * * *" # 6:30 AM UTC+8
   push:
     branches:
       - workflow
