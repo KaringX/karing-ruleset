@@ -72,7 +72,7 @@ jobs:
         run: |
           cd sing-rule || exit 1
           cp ../workflow/README.md .
-          ls
+          mkdir -p .github/workflows && cp ../workflow/.github/workflows/run.yml .github/workflows
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
