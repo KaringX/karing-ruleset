@@ -41,7 +41,7 @@ jobs:
         run: |
           cd sing-rule || exit 1
           wget -q https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box ./
-          chmod 755 sing-box ACL4SSR/convert_srs.sh && ./ACL4SSR/convert_srs.sh ../sing-box
+          chmod 755 sing-box ACL4SSR/convert_srs.sh && ./ACL4SSR/convert_srs.sh ./sing-box
           rm -rf sing-box* LICENSE README.md ACL4SSR/convert_*
 
       - name: Checkout meta-rules-dat
