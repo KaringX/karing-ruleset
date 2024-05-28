@@ -72,6 +72,7 @@ jobs:
         run: |
           cd sing-rule || exit 1
           cp ../workflow/README.md . && cp -r ../workflow/.github .
+          cp ACL4SSR/*.srs .
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -87,10 +88,11 @@ jobs:
         #   echo -e "\t${file} PURGE...\n"
         # done
         run: |
-          cd sing-rule/ACL4SSR || exit 1
+          cd sing-rule/ || exit 1
           for file in $(ls); do
-            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/ACL4SSR/${file}"
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@sing/${file}"
           done
+          curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/ACL4SSR"
           curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/ACL4SSR/Ruleset"
           curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/geo/geoip"
           curl -i -Ls "https://purge.jsdelivr.net/gh/KaringX/karing-ruleset@sing/geo/geosite"
