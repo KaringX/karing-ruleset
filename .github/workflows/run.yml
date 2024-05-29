@@ -65,7 +65,11 @@ jobs:
           cd sing-rule || exit 1
           cp -r ../meta-rules-dat/geo ./
           cp -r ../Iran-sing-box-rules/geoip-ir.srs ./geo/geoip/ir.srs
+          cp -r ../Iran-sing-box-rules/geoip-malware.srs ./geo/geoip/malware.srs
+          cp -r ../Iran-sing-box-rules/geoip-phishing.srs ./geo/geoip/phishing.srs
           cp -r ../Iran-sing-box-rules/geosite*ir.srs ./geo/geosite/
+          cp -r ../Iran-sing-box-rules/geosite-geolocation*.srs ./geo/geosite/
+          cp -r ../Iran-sing-box-rules/geosite-cryptominers.srs ./geo/geosite/
           cd ./geo/geosite/ && find ./ -type f -name "geosite-*ir.srs" -exec bash -c 'mv "$1" "${1/geosite-/}"' _ {} \;
 
       - name: Git push assets to "sing-rule" branch
