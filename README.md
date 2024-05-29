@@ -9,28 +9,50 @@
 # GeoIP/GeoSite
 - The source files of Iran come from **Chocolate4U**
 ```
-│
-├──geoip
-│  └── ir.srs
-│
-└── geosite
-    ├── ir.srs
-    ├── category-ads-ir.srs
-    ├── category-bank-ir.srs
-    ├── category-bourse-ir.srs
-    ├── category-education-ir.srs
-    ├── category-forums-ir.srs
-    ├── category-gov-ir.srs
-    ├── category-insurance-ir.srs
-    ├── category-ir.srs
-    ├── category-media-ir.srs
-    ├── category-news-ir.srs
-    ├── category-payment-ir.srs
-    ├── category-scholar-ir.srs
-    ├── category-shopping-ir.srs
-    ├── category-social-media-ir.srs
-    ├── category-tech-ir.srs
-    └── category-travel-ir.srs
+geoip/
+    amazon.srs
+    arvancloud.srs
+    bing.srs
+    derakcloud.srs
+    digitalocean.srs
+    github.srs
+    iranserver.srs
+    ir.srs
+    linode.srs
+    malware.srs
+    microsoft.srs
+    openai.srs
+    oracle.srs
+    parspack.srs
+    phishing.srs
+
+geosite
+    ads.srs
+    category-ads-ir.srs
+    category-bank-ir.srs
+    category-bourse-ir.srs
+    category-education-ir.srs
+    category-forums-ir.srs
+    category-gov-ir.srs
+    category-insurance-ir.srs
+    category-ir.srs
+    category-media-ir.srs
+    category-news-ir.srs
+    category-payment-ir.srs
+    category-scholar-ir.srs
+    category-shopping-ir.srs
+    category-social-media-ir.srs
+    category-tech-ir.srs
+    category-travel-ir.srs
+    cn@ads.srs
+    cryptominers.srs
+    geolocation-!cn@ads.srs
+    geolocation-cn@ads.srs
+    ir.srs
+    malware.srs
+    nsfw.srs
+    phishing.srs
+    social.srs
 
 ```
 
