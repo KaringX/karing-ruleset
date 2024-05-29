@@ -34,7 +34,6 @@ jobs:
           cp ./workflow/resouces/convert_* ./sing-rule/ACL4SSR/
           cd sing-rule/ACL4SSR/ || exit 1
           python convert_json.py ../../ACL4SSR/Clash ./
-          cp Ruleset/*.srs ./
 
       - name: Convert json to srs
         env:
@@ -44,6 +43,7 @@ jobs:
           wget -q https://github.com/SagerNet/sing-box/releases/download/v1.8.12/sing-box-1.8.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.8.12-linux-amd64/sing-box ./
           chmod 755 sing-box ACL4SSR/convert_srs.sh && ./ACL4SSR/convert_srs.sh ./sing-box
           rm -rf sing-box* LICENSE README.md ACL4SSR/convert_*
+          cp ./ACL4SSR/Ruleset/*.srs ./ACL4SSR
 
       - name: Checkout meta-rules-dat
         uses: actions/checkout@v4
