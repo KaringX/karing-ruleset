@@ -49,17 +49,14 @@ for file1 in $(ls *.srs); do
     if [ ! -f $file2 ]; then
         cp $file1 $file2
         echo "${fsub}/${filename2}" >> $LOG_FILE
-    fi
-    if [[ " ${SPECIAL_CODES[@]} " =~ " $ccode " ]]; then
+
+    elif [[ " ${SPECIAL_CODES[@]} " =~ " $ccode " ]]; then
         cp $file1 $file2
         echo "${fsub}/${filename2}" >> $LOG_FILE
-        # echo $ccode
+        # echo -e "\n\t$ccode $file1"
     fi
 done
 cat $LOG_FILE
-
-
-
 
 
 #END FILE
