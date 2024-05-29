@@ -34,6 +34,7 @@ jobs:
           cp ./workflow/resouces/convert_* ./sing-rule/ACL4SSR/
           cd sing-rule/ACL4SSR/ || exit 1
           python convert_json.py ../../ACL4SSR/Clash ./
+          cp Ruleset/*.srs ./
 
       - name: Convert json to srs
         env:
@@ -64,19 +65,12 @@ jobs:
         run: |
           cd sing-rule || exit 1
           cp -r ../meta-rules-dat/geo ./
-          cp -r ../Iran-sing-box-rules/geoip-ir.srs ./geo/geoip/ir.srs
-          cp -r ../Iran-sing-box-rules/geoip-malware.srs ./geo/geoip/malware.srs
-          cp -r ../Iran-sing-box-rules/geoip-phishing.srs ./geo/geoip/phishing.srs
-          cp -r ../Iran-sing-box-rules/geosite*ir.srs ./geo/geosite/
-          cp -r ../Iran-sing-box-rules/geosite-geolocation*.srs ./geo/geosite/
-          cp -r ../Iran-sing-box-rules/geosite-cryptominers.srs ./geo/geosite/
-          cd ./geo/geosite/ && find ./ -type f -name "geosite-*ir.srs" -exec bash -c 'mv "$1" "${1/geosite-/}"' _ {} \;
+          bash ../workflow/resouces/merge_geo_ir.sh  ./geo  ../Iran-sing-box-rules/
 
       - name: Git push assets to "sing-rule" branch
         run: |
           cd sing-rule || exit 1
           cp ../workflow/README.md . && cp -r ../workflow/.github .
-          cp ACL4SSR/Ruleset/*.srs ./ACL4SSR/
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
