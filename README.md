@@ -5,6 +5,14 @@
 - [Chocolate4U-Iran](https://github.com/Chocolate4U/Iran-sing-box-rules/tree/rule-set?tab=readme-ov-file)
 - [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR)
 
+## Welcome to submit your preferred rule-set
+- [submit your preferred rule-set](https://github.com/KaringX/karing-ruleset/issues/2)
+- [欢迎提交你中意的规则集](https://github.com/KaringX/karing-ruleset/issues/1)
+
+## Description
+- karing 1.0.23.263 and later versions will default to including all rules from this repository.
+- Please use the latest version of sing-box, as versions before 1.9 had issues with domain name matching. For example, 'google.com' was incorrectly matching 'le.com'."
+    - [Improve domain suffix match behavior](https://github.com/SagerNet/sing/commit/4d96f15eca075f4b5535053304d54812fdfa96e0)
 
 # GeoIP/GeoSite
 - The source files of Iran come from **Chocolate4U**
