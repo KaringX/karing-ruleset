@@ -60,9 +60,9 @@ def converto_json(src_file: str, out_path: str):
             row = line.split(",")
             if len(row) >= 2:
                 rule, cont = row[0].upper(), row[1].strip()
-                # if 'le.com' == cont:
-                # deug_log(f"row:{row} drop le.com/match google.com")
-                # rule = 'PASS'
+                if 'le.com' == cont:
+                    deug_log(f"row:{row} drop le.com/match google.com")
+                    rule = 'PASS'
 
                 if rule in MAP_RULES_KEY_DICT:
                     rkey = MAP_RULES_KEY_DICT[rule]
