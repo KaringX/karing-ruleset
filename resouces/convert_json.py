@@ -31,25 +31,27 @@ def main(src_path: str, out_path: str = None):
 
 def listdir_format(src_path: str, out_path: str):
     for item in os.listdir(src_path):
-        if os.path.isdir(item):
+        target_path = os.path.join(src_path, item)
+
+        if os.path.isdir(target_path):
             out_path2 = os.path.join(out_path, item)
             if os.path.exists(out_path2) is False:
                 os.mkdir(out_path2)
                 deug_log(f"mkdir {out_path2}")
-            listdir_format(os.path.join(src_path, item), out_path=out_path2)
+            listdir_format(target_path, out_path=out_path2)
         else:
-            converto_json(os.path.join(src_path, item), out_path=out_path)
+            converto_json(target_path, out_path=out_path)
 
 
-def converto_json(src_file: str, out_path: str):
+def read_rules_from_file(src_file: str) -> dict | None:
     splits = os.path.splitext(src_file)
     if splits[1] != ".list":
-        return
+        # deug_log(f"ERR: only support '.list' {src_file}")
+        return None
     if not os.path.isfile(src_file):
-        deug_log(f"ERROR FILE: {src_file}")
-        return
+        deug_log(f"ERR: not file {src_file}")
+        return None
 
-    out_file = os.path.join(out_path, os.path.basename(splits[0]) + ".json")
     content = {"version": 1, "rules": [{}]}
 
     with open(src_file, "r") as f:
@@ -84,7 +86,14 @@ def converto_json(src_file: str, out_path: str):
             line = f.readline()
             # END while
 
-    if len(content['rules'][0]) == 0:
+    return None if len(content['rules'][0]) == 0 else content
+
+
+def converto_json(src_file: str, out_path: str):
+    splits = os.path.splitext(src_file)
+    out_file = os.path.join(out_path, os.path.basename(splits[0]) + ".json")
+    content = read_rules_from_file(src_file)
+    if content is None:
         return
 
     json_string = json.dumps(content)
