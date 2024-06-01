@@ -67,6 +67,13 @@ jobs:
           cp -r ../meta-rules-dat/geo ./
           bash ../workflow/resouces/merge_geo_ir.sh  ./geo  ../Iran-sing-box-rules/
 
+      - name: maker karing built-in rule-set group
+        env:
+          NO_SKIP: true
+        run: |
+          mkdir -p ./sing-rule/karing
+          python workflow/resouces/kr_builtin_ruleset.py ./sing-rule/
+
       - name: Git push assets to "sing-rule" branch
         run: |
           cd sing-rule || exit 1
