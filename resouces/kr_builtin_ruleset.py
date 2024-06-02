@@ -33,7 +33,7 @@ def debug_log(msg: str):
 OPT_RULESET_GROUPS = {}
 OPT_RULESET_GROUPS['default'] = {
     '🛑 Adblock': {
-        'default': 'on',
+        'default': 'off',
         'outbound': 'block_out',
         'rules': [
             'acl:BanAD',
@@ -88,7 +88,7 @@ OPT_RULESET_GROUPS['default'] = {
 ## start china
 OPT_RULESET_GROUPS['cn'] = {
     '🛑 广告拦截': {
-        'default': 'on',
+        'default': 'off',
         'outbound': 'block_out',
         'rules': [
             'acl:BanAD',
@@ -199,7 +199,7 @@ OPT_RULESET_GROUPS['cn'] = {
 ##start iran
 OPT_RULESET_GROUPS['ir'] = OPT_RULESET_GROUPS['default'].copy()
 OPT_RULESET_GROUPS['ir']['🛑 Adblock'] = {
-    'default': 'on',
+    'default': 'off',
     'outbound': 'block_out',
     'rules': [
         'geosite:category-ads',
@@ -269,11 +269,12 @@ def maker_for_area(area: str, config: dict, root_path: str) -> bool:
 def maker_one_rule(name: str, group: dict) -> dict:
     outbound = group['outbound']
     rule_set = group['rules']
+    switch = group['default'] if group['default'] in ['on', 'off'] else 'off'
     return {
         "rule_set": rule_set,
         "outbound": outbound,
         "name": f"{name}[karing]",
-        'switch': group['default'],
+        'switch': switch,
     }
 
 
