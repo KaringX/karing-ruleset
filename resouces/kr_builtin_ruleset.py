@@ -272,8 +272,9 @@ def maker_one_rule(name: str, group: dict) -> dict:
     return {
         "rule_set": rule_set,
         "outbound": outbound,
-        "name": f"{name}[karing]",
-        'switch': group['default'],
+        # "name": f"{name}[karing]",
+        "name": name,
+        'switch': True if group['default'] == 'on' else False,
     }
 
 
