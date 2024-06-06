@@ -2,9 +2,10 @@
 
 
 - outbound:
-    - direct_out    直连
-    - block_out     屏蔽
-    - selector_out  当前选择[default]
+    - direct_out    [direct] 直连
+    - block_out     [block] 屏蔽
+    - selector_out  [currentSelected] 当前选择(default)
+    - [selector] 自动选择
 
  - default
     - geoip/[area].srs
@@ -30,6 +31,15 @@ def debug_log(msg: str):
     pass
 
 
+# diy change for karing
+OPT_CFG_JSON_DIR = 'recommend'
+OPT_OUTBOUND_CHG_MAP = {
+    'direct_out': 'direct',
+    'block_out': 'block',
+    'selector_out': 'currentSelected',
+}
+
+# rule-set
 OPT_RULESET_GROUPS = {}
 OPT_RULESET_GROUPS['default'] = {
     '🛑 Adblock': {
@@ -226,12 +236,15 @@ OPT_RULESET_GROUPS['ir']['☁️ parspack'] = {
 
 def maker_for_area(area: str, config: dict, root_path: str) -> bool:
     # config dir/file
-    cfg_dir = os.path.join(root_path, 'karing')
+    cfg_dir = os.path.join(root_path, OPT_CFG_JSON_DIR)
     if not os.path.exists(cfg_dir):
         os.mkdir(cfg_dir)
         debug_log(f"mkdir {cfg_dir}")
 
-    cfg_file = os.path.join(cfg_dir, f"{area}.json")
+    files = {
+        'rule_set': os.path.join(cfg_dir, f"{area}-set.json"),
+        'rules': os.path.join(cfg_dir, f"{area}.json"),
+    }
 
     # for each group
     route_dict = {'rules': {}, 'rule_set': {}}
@@ -253,17 +266,18 @@ def maker_for_area(area: str, config: dict, root_path: str) -> bool:
 
         # END for
 
-    # convert to list
-    route_dict['rule_set'] = list(route_dict['rule_set'].values())
-    route_dict['rules'] = list(route_dict['rules'].values())
+    ret = 0
+    for fk, file in files.items():
+        # convert to list
+        route_list = list(route_dict[fk].values())
 
-    json_string = json.dumps({'route': route_dict})
-    with open(cfg_file, "w") as json_file:
-        json_file.write(json_string)
-        debug_log(f"wirte to {cfg_file}")
-        return True
+        json_string = json.dumps({fk: route_list}, indent=4, ensure_ascii=False)
+        with open(file, "w") as json_file:
+            json_file.write(json_string)
+            debug_log(f"wirte to {file}")
+            ret += 1
 
-    return False
+    return True if ret == len(files) else False
 
 
 def maker_one_rule(name: str, group: dict) -> dict:
@@ -314,6 +328,9 @@ def maker_one_row(gval: any) -> dict:
 
     else:
         raise ValueError(f"ERR: type:{vtype} gval:{gval}")
+
+    ## chg for karing
+    gval['outbound'] = OPT_OUTBOUND_CHG_MAP[gval['outbound']]
 
     return gval
 

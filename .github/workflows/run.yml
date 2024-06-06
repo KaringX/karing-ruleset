@@ -71,7 +71,7 @@ jobs:
         env:
           NO_SKIP: true
         run: |
-          mkdir -p ./sing-rule/karing
+          mkdir -p ./sing-rule/recommend
           python workflow/resouces/kr_builtin_ruleset.py ./sing-rule/
 
       - name: Git push assets to "sing-rule" branch
