@@ -114,7 +114,7 @@ OPT_RULESET_GROUPS['cn'] = {
         'default': 'on',
         'outbound': 'direct_out',
         'rules': [
-            'acl:LocalAreaNetwork',
+            # 'acl:LocalAreaNetwork',
             'acl:UnBan',
             'acl:GoogleCN',
             'acl:SteamCN',
@@ -129,12 +129,18 @@ OPT_RULESET_GROUPS['cn'] = {
         'outbound': 'direct_out',
         'rules': ['acl:ChinaMedia'],
     },
-    '🚀 国外媒体': {
+    '🚀 GFWlist': {
         'default': 'on',
         'outbound': 'selector_out',
         'rules': [
-            'acl:ProxyMedia',
             'acl:ProxyGFWlist',
+        ],
+    },
+    '🌏 国外媒体': {
+        'default': 'off',
+        'outbound': 'selector_out',
+        'rules': [
+            'acl:ProxyMedia',
         ],
     },
     'Ⓜ️ 微软Bing': {
