@@ -84,6 +84,7 @@ OPT_RULESET_GROUPS['default'] = {
     },
     '📲 Telegram': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAi': ['geoip:openai', 'geosite:openai'],
+    '🐱 GitHub': ['geoip:github', 'geosite:github'],
     '🎮 Game': [
         'acl:Epic',
         'acl:Origin',
@@ -177,6 +178,7 @@ OPT_RULESET_GROUPS['cn'] = {
     },
     '📲 电报消息': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAi': ['geoip:openai', 'geosite:openai'],
+    '🐱 GitHub': ['geoip:github', 'geosite:github'],
     '🎶 网易音乐': {
         'default': 'off',
         'outbound': 'direct_out',
