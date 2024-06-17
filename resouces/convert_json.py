@@ -9,7 +9,7 @@ MAP_RULES_KEY_DICT = {
     'DOMAIN': 'domain',
     'DOMAIN-SUFFIX': 'domain_suffix',
     'DOMAIN-KEYWORD': 'domain_keyword',
-    'PROCESS-NAME': 'process_name',
+    # 'PROCESS-NAME': 'process_name',
 }
 
 
@@ -86,7 +86,11 @@ def read_rules_from_file(src_file: str) -> dict | None:
             line = f.readline()
             # END while
 
-    return None if len(content['rules'][0]) == 0 else content
+    if len(content['rules'][0]) == 0:
+        deug_log(f"empty rules: {src_file}")
+        return None
+
+    return content
 
 
 def converto_json(src_file: str, out_path: str):
