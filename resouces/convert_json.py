@@ -9,8 +9,11 @@ MAP_RULES_KEY_DICT = {
     'DOMAIN': 'domain',
     'DOMAIN-SUFFIX': 'domain_suffix',
     'DOMAIN-KEYWORD': 'domain_keyword',
-    # 'PROCESS-NAME': 'process_name',
+    'PROCESS-NAME': 'process_name',
 }
+
+# disabled process_name
+SPECIAL_TREATMENT_PN_LIST = ['Crypto.list', 'ProxyMedia.list']
 
 
 def deug_log(msg: str):
@@ -54,6 +57,12 @@ def read_rules_from_file(src_file: str) -> dict | None:
 
     content = {"version": 1, "rules": [{}]}
 
+    # disable process name
+    is_spical_pn = False
+    for sfile in SPECIAL_TREATMENT_PN_LIST:
+        if src_file.endswith(sfile):
+            is_spical_pn = True
+
     with open(src_file, "r") as f:
         line = f.readline()
         while line:
@@ -65,9 +74,13 @@ def read_rules_from_file(src_file: str) -> dict | None:
                 if 'le.com' == cont:
                     deug_log(f"row:{row} drop le.com/match google.com")
                     rule = 'PASS'
+                if is_spical_pn is True and rule == 'PROCESS-NAME':
+                    deug_log(f"row:{row} drop PROCESS-NAME")
+                    rule = 'PASS'
 
                 if rule in MAP_RULES_KEY_DICT:
                     rkey = MAP_RULES_KEY_DICT[rule]
+
                     if rkey in content['rules'][0]:
                         content['rules'][0][rkey].append(cont)
                     else:
