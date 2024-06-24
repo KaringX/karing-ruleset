@@ -2,6 +2,7 @@
 import sys
 import os
 import json
+import requests
 
 MAP_RULES_KEY_DICT = {
     'IP-CIDR': 'ip_cidr',
@@ -15,6 +16,11 @@ MAP_RULES_KEY_DICT = {
 # disabled process_name
 SPECIAL_TREATMENT_PN_LIST = ['Crypto.list', 'ProxyMedia.list']
 
+# Adblock Addon
+ADDON_ADBLOCK_DOMAINS = {
+    'BanADCompany': 'https://github.com/d3ward/toolz/raw/master/src/data/adblock_data.json',
+}
+
 
 def deug_log(msg: str):
     print(msg)
@@ -22,14 +28,18 @@ def deug_log(msg: str):
 
 
 def main(src_path: str, out_path: str = None):
-    out_path = (
+    # out_path = get_out_path(out_path)
+    # src_path = os.path.abspath(src_path)
+    deug_log(f"{src_path} to {out_path}")
+    listdir_format(src_path, out_path=out_path)
+
+
+def get_out_path(out_path: str = None):
+    return (
         os.getcwd()
         if out_path is None or len(out_path) == 0
         else os.path.abspath(out_path)
     )
-    src_path = os.path.abspath(src_path)
-    deug_log(f"{src_path} to {out_path}")
-    listdir_format(src_path, out_path=out_path)
 
 
 def listdir_format(src_path: str, out_path: str):
@@ -113,17 +123,68 @@ def converto_json(src_file: str, out_path: str):
     if content is None:
         return
 
+    return writeto_rulefile(out_file, content)
+    # END converto_josn
+
+
+def writeto_rulefile(out_file: str, content: dict):
     json_string = json.dumps(content)
     with open(out_file, "w") as json_file:
         json_file.write(json_string)
         deug_log(f"wirte to {out_file}")
-    # END converto_josn
+
+
+## Addon
+def addon_adblock(out_path: str):
+    for name, url in ADDON_ADBLOCK_DOMAINS.items():
+        content = get_url_content(url)
+        if isinstance(content, str) and len(content) > 100:
+            json_data = json.loads(content)
+            domains = extract_strings_from_dict(json_data)
+            content = {"version": 1, "rules": [{'domain_suffix': domains}]}
+            out_file = os.path.join(out_path, name + ".json")
+            if isinstance(domains, list) and len(domains) > 0:
+                writeto_rulefile(out_file=out_file, content=content)
+        else:
+            continue
+        # END for
+
+
+def get_url_content(url: str):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.text
+    else:
+        deug_log(f"Error downloading url:{url} \tStatus code: {response.status_code}")
+        return None
+
+
+def extract_strings_from_dict(data_dict, my_dict=None):
+    if my_dict is None:
+        my_dict = []
+
+    for key, value in data_dict.items():
+        if isinstance(value, dict):
+            # 递归调用处理子字典
+            extract_strings_from_dict(value, my_dict)
+        elif isinstance(value, str):
+            my_dict.append(value)
+        elif isinstance(value, list):
+            # 如果值是一个列表，处理列表中的每一项
+            for item in value:
+                if isinstance(item, dict):
+                    extract_strings_from_dict(item, my_dict)
+                elif isinstance(item, str):
+                    my_dict.append(item)
+
+    return my_dict
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage: python script.py <first_parameter> <second_parameter>")
     else:
-        src_path = sys.argv[1]
-        out_path = sys.argv[2]
+        src_path = get_out_path(sys.argv[1])
+        out_path = get_out_path(sys.argv[2])
         main(src_path, out_path)
+        addon_adblock(out_path)

@@ -50,6 +50,11 @@ OPT_RULESET_GROUPS['default'] = {
             'geosite:category-ads',
         ],
     },
+    '🍃 AdblockPlus': {
+        'default': 'off',
+        'outbound': 'block_out',
+        'rules': ['acl:BanProgramAD', 'acl:BanADCompany'],
+    },
     'Ⓜ️ Bing': {
         'default': 'off',
         'outbound': 'selector_out',
@@ -107,9 +112,9 @@ OPT_RULESET_GROUPS['cn'] = {
         ],
     },
     '🍃 应用净化': {
-        'default': 'on',
+        'default': 'off',
         'outbound': 'block_out',
-        'rules': ['acl:BanProgramAD'],
+        'rules': ['acl:BanProgramAD', 'acl:BanADCompany'],
     },
     '🎯 国内直连': {
         'default': 'on',
