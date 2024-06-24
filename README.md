@@ -90,6 +90,7 @@ https://fastly.jsdelivr.net/gh/karingX/karing-ruleset@sing/ACL4SSR/BanAD.srs
 | 文件                   | 类型                 | 解释                                                         |
 | ---------------------- | -------------------- | ------------------------------------------------------------ |
 | BanAD.srs             | 规则碎片-去广告      | 只包含常见广告关键字、广告联盟。无副作用，放心使用           |
+| BanADCompany.srs             | 规则碎片-去广告      | 包含各大公司的广告域名, 数据来源:[adblock_data.json](https://github.com/d3ward/toolz/raw/master/src/data/adblock_data.json)           |
 | BanProgramAD.srs      | 规则碎片-去广告      | 包含常用应用的各种去广告规则。可能有轻微副作用，可放心使用。（如果网站功能和广告冲突，会删掉去广告规则） |
 | BanEasyListChina.srs  | 规则碎片-去广告      | AdblockPlus中的中国所有的屏蔽域名                            |
 | LocalAreaNetwork.srs  | 规则碎片-直连        | 本地地址和路由器直连域名啥的                                 |
