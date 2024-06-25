@@ -88,7 +88,7 @@ OPT_RULESET_GROUPS['default'] = {
         ],
     },
     '📲 Telegram': ['geoip:telegram', 'geosite:telegram'],
-    '💬 OpenAi': ['geoip:openai', 'geosite:openai'],
+    '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
     '🎮 Game': [
         'acl:Epic',
@@ -135,15 +135,8 @@ OPT_RULESET_GROUPS['cn'] = {
         'outbound': 'direct_out',
         'rules': ['acl:ChinaMedia'],
     },
-    '🚀 GFWlist': {
-        'default': 'on',
-        'outbound': 'selector_out',
-        'rules': [
-            'acl:ProxyGFWlist',
-        ],
-    },
     '🌏 国外媒体': {
-        'default': 'off',
+        'default': 'on',
         'outbound': 'selector_out',
         'rules': [
             'acl:ProxyMedia',
@@ -182,7 +175,7 @@ OPT_RULESET_GROUPS['cn'] = {
         ],
     },
     '📲 电报消息': ['geoip:telegram', 'geosite:telegram'],
-    '💬 OpenAi': ['geoip:openai', 'geosite:openai'],
+    '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
     '🎶 网易音乐': {
         'default': 'off',
@@ -216,6 +209,13 @@ OPT_RULESET_GROUPS['cn'] = {
             'acl:GoogleFCM',
         ],
     },
+    '🚀 GFWlist': {
+        'default': 'on',
+        'outbound': 'selector_out',
+        'rules': [
+            'acl:ProxyGFWlist',
+        ],
+    },
 }
 ##end china
 
@@ -240,9 +240,14 @@ OPT_RULESET_GROUPS['ir']['📢 phishing'] = {
     'rules': ['geoip:phishing', 'geosite:phishing'],
 }
 OPT_RULESET_GROUPS['ir']['☁️ parspack'] = {
-    'default': 'off',
+    'default': 'on',
     'outbound': 'direct_out',
     'rules': ['geoip:parspack'],
+}
+OPT_RULESET_GROUPS['ir']['☁️ arvancloud'] = {
+    'default': 'on',
+    'outbound': 'direct_out',
+    'rules': ['geoip:arvancloud'],
 }
 ##end iran
 
