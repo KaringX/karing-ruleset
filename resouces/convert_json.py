@@ -81,9 +81,9 @@ def read_rules_from_file(src_file: str) -> dict | None:
             row = line.split(",")
             if len(row) >= 2:
                 rule, cont = row[0].upper(), row[1].strip()
-                if 'le.com' == cont:
-                    deug_log(f"row:{row} drop le.com/match google.com")
-                    rule = 'PASS'
+                # if cont in ['le.com', 'in.com']:
+                # deug_log(f"row:{row} drop le.com/match google.com")
+                # rule = 'PASS'
                 if is_spical_pn is True and rule == 'PROCESS-NAME':
                     deug_log(f"row:{row} drop PROCESS-NAME")
                     rule = 'PASS'
