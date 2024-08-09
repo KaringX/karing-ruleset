@@ -19,6 +19,8 @@
     - category-ads 包含了常见的广告域名
     - category-ads-all 包含了常见的广告域名，以及广告提供商的域名
 
+- emoji
+    - 🌏 🚀
 """
 
 import sys
@@ -121,24 +123,23 @@ OPT_RULESET_GROUPS['cn'] = {
         'outbound': 'direct_out',
         'rules': [
             # 'acl:LocalAreaNetwork',
-            'acl:UnBan',
-            'acl:GoogleCN',
-            'acl:SteamCN',
             'acl:ChinaIp',
             'acl:ChinaDomain',
             'acl:ChinaCompanyIp',
+            'geosite:google-cn',
+            'acl:UnBan',
+            'acl:SteamCN',
             'acl:Download',
+            'acl:ChinaMedia',
         ],
     },
-    '🌏 国内媒体': {
-        'default': 'on',
-        'outbound': 'direct_out',
-        'rules': ['acl:ChinaMedia'],
-    },
-    '🌏 国外媒体': {
+    '🌏 境外网络': {
         'default': 'on',
         'outbound': 'selector_out',
         'rules': [
+            'geosite:geolocation-!cn',
+            'geosite:google',
+            'acl:ProxyGFWlist',
             'acl:ProxyMedia',
         ],
     },
@@ -174,6 +175,13 @@ OPT_RULESET_GROUPS['cn'] = {
             'geosite:apple-update',
         ],
     },
+    '📢 谷歌FCM': {
+        'default': 'off',
+        'outbound': 'direct_out',
+        'rules': [
+            'acl:GoogleFCM',
+        ],
+    },
     '📲 电报消息': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
@@ -200,20 +208,6 @@ OPT_RULESET_GROUPS['cn'] = {
         'rules': [
             'acl:BilibiliHMT',
             'acl:Bilibili',
-        ],
-    },
-    '📢 谷歌FCM': {
-        'default': 'off',
-        'outbound': 'direct_out',
-        'rules': [
-            'acl:GoogleFCM',
-        ],
-    },
-    '🚀 GFWlist': {
-        'default': 'on',
-        'outbound': 'selector_out',
-        'rules': [
-            'acl:ProxyGFWlist',
         ],
     },
 }
