@@ -2,7 +2,7 @@
 
 ## Thanks to
 - [meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo)
-- [Chocolate4U-Iran](https://github.com/Chocolate4U/Iran-sing-box-rules/tree/rule-set?tab=readme-ov-file)
+- [Chocolate4U-Iran](https://github.com/Chocolate4U/Iran-sing-box-rules/tree/rule-set?tab=readme-ov-file) 、[v2ray/xray client configuration](https://github.com/Chocolate4U/Iran-v2ray-rules?tab=readme-ov-file#computer-usage)
 - [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR)
 - Thank you for suggested modifying the recommend rules:
     - @VPNBrooklynSup (🧑🏻‍💻 پشتیبانی بروکلین «دریچه»)

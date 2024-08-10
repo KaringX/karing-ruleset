@@ -20,7 +20,7 @@
     - category-ads-all 包含了常见的广告域名，以及广告提供商的域名
 
 - emoji
-    - 🌏 🚀
+    - 🌏 🚀 🛑
 """
 
 import sys
@@ -225,14 +225,18 @@ OPT_RULESET_GROUPS['ir']['🛑 Adblock'] = {
     ],
 }
 OPT_RULESET_GROUPS['ir']['🛑 malware'] = {
-    'default': 'off',
+    'default': 'on',
     'outbound': 'block_out',
-    'rules': ['geosite:malware'],
-}
-OPT_RULESET_GROUPS['ir']['📢 phishing'] = {
-    'default': 'off',
-    'outbound': 'direct_out',
-    'rules': ['geoip:phishing', 'geosite:phishing'],
+    'rules': [
+        # 恶意软件
+        'geosite:malware',
+        'geoip:malware'
+        # 钓鱼网站
+        'geoip:phishing',
+        'geosite:phishing',
+        # 后台挖矿
+        'geosite:cryptominers',
+    ],
 }
 OPT_RULESET_GROUPS['ir']['☁️ parspack'] = {
     'default': 'on',
