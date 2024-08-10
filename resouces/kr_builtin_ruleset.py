@@ -230,7 +230,7 @@ OPT_RULESET_GROUPS['ir']['🛑 malware'] = {
     'rules': [
         # 恶意软件
         'geosite:malware',
-        'geoip:malware'
+        'geoip:malware',
         # 钓鱼网站
         'geoip:phishing',
         'geosite:phishing',
@@ -369,7 +369,7 @@ def rule_file_exists(rule: str, root_path: str) -> bool:
 
 def main():
     if len(sys.argv) < 2:
-        deug_log("Usage: python script.py <srs_file_root_path>")
+        debug_log("Usage: python script.py <srs_file_root_path>")
         return
 
     root_path = sys.argv[1]
