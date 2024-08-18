@@ -67,7 +67,22 @@ geosite
 
 ```
 
-
+- geosite的一些说明:
+```
+geosite:category-ads　包含了常见的广告域名。
+geosite:category-ads-all　包含了常见的广告域名，以及广告提供商的域名。
+geosite:cn　相当于 geolocation-cn 和 tld-cn 的合集。
+geosite:apple　包含了 Apple 旗下绝大部分域名。
+geosite:google　包含了 Google 旗下绝大部分域名。
+geosite:microsoft　包含了 Microsoft 旗下绝大部分域名。
+geosite:facebook　包含了 Facebook 旗下绝大部分域名。
+geosite:twitter　包含了 Twitter 旗下绝大部分域名。
+geosite:telegram　包含了 Telegram 旗下绝大部分域名。
+geosite:geolocation-cn　包含了常见的大陆站点域名。
+geosite:geolocation-!cn　包含了常见的非大陆站点域名，同时包含了 tld-!cn。
+geosite:tld-cn　包含了 CNNIC 管理的用于中国大陆的顶级域名，如以 .cn、.中国 结尾的域名。
+geosite:tld-!cn　包含了非中国大陆使用的顶级域名，如以 .hk（香港）、.tw（台湾）、.jp（日本）、.sg（新加坡）、.us（美国）.ca（加拿大）等结尾的域名。
+```
 
 # sing-box/karing rule-set规则碎片
 - 基于ACL4SSR和geoip、geosite规则源文件生成的json和srs规则文件

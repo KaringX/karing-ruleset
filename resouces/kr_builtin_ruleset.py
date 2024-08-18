@@ -57,6 +57,20 @@ OPT_RULESET_GROUPS['default'] = {
         'outbound': 'block_out',
         'rules': ['acl:BanProgramAD', 'acl:BanADCompany'],
     },
+    '🛑 malware': {
+        'default': 'on',
+        'outbound': 'block_out',
+        'rules': [
+            # 恶意软件
+            'geosite:malware',  # 2.8K
+            'geoip:malware',  # 7.3K
+            # 钓鱼网站
+            'geoip:phishing',  # 50
+            'geosite:phishing',  # 7.2K
+            # 后台挖矿
+            'geosite:cryptominers',  # 3.7K
+        ],
+    },
     'Ⓜ️ Bing': {
         'default': 'off',
         'outbound': 'selector_out',
@@ -109,39 +123,45 @@ OPT_RULESET_GROUPS['cn'] = {
         'default': 'off',
         'outbound': 'block_out',
         'rules': [
-            'acl:BanAD',
-            'geosite:category-ads',
+            'acl:BanAD',  # 3.7K
+            'geosite:category-ads',  # 6.0K
         ],
     },
     '🍃 应用净化': {
         'default': 'off',
         'outbound': 'block_out',
-        'rules': ['acl:BanProgramAD', 'acl:BanADCompany'],
+        'rules': [
+            'acl:BanProgramAD',  # 7.0K
+            'acl:BanADCompany',  # 1.44 KB
+        ],
     },
     '🎯 国内直连': {
         'default': 'on',
         'outbound': 'direct_out',
         'rules': [
             # 'acl:LocalAreaNetwork',
-            'acl:ChinaIp',
-            'acl:ChinaDomain',
-            'acl:ChinaCompanyIp',
-            # 'geosite:google-cn',
-            'acl:GoogleCN',
-            'acl:UnBan',
-            'acl:SteamCN',
-            'acl:Download',
-            'acl:ChinaMedia',
+            # geosite:cn # 355K  geolocation-cn 和 tld-cn 的合集
+            #       'geosite:geolocation-cn',  # 31K
+            # geoip:cn # 42K
+            'acl:ChinaIp',  # 24K
+            'acl:ChinaDomain',  # 3.6K
+            'acl:ChinaCompanyIp',  # 1.1K
+            # 'geosite:google-cn', # 1.8K
+            'acl:GoogleCN',  # 345
+            'acl:UnBan',  # 281
+            'acl:SteamCN',  # 271
+            'acl:Download',  # 178
+            'acl:ChinaMedia',  # 414
         ],
     },
-    '🌏 境外网络': {
+    '🌏 国外穿墙': {
         'default': 'on',
         'outbound': 'selector_out',
         'rules': [
-            'geosite:geolocation-!cn',
-            'geosite:google',
-            'acl:ProxyGFWlist',
-            'acl:ProxyMedia',
+            'geosite:geolocation-!cn',  # 170K
+            'geosite:google',  # 8.7K
+            'acl:ProxyGFWlist',  # 37K
+            'acl:ProxyMedia',  # 2.9K
         ],
     },
     'Ⓜ️ 微软Bing': {
@@ -186,13 +206,6 @@ OPT_RULESET_GROUPS['cn'] = {
     '📲 电报消息': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
-    '🎶 网易音乐': {
-        'default': 'off',
-        'outbound': 'direct_out',
-        'rules': [
-            'acl:NetEaseMusic',
-        ],
-    },
     '🎮 游戏平台': [
         'acl:Epic',
         'acl:Origin',
@@ -211,6 +224,13 @@ OPT_RULESET_GROUPS['cn'] = {
             'acl:Bilibili',
         ],
     },
+    '🎶 网易音乐': {
+        'default': 'off',
+        'outbound': 'direct_out',
+        'rules': [
+            'acl:NetEaseMusic',
+        ],
+    },
 }
 ##end china
 
@@ -221,21 +241,7 @@ OPT_RULESET_GROUPS['ir']['🛑 Adblock'] = {
     'outbound': 'block_out',
     'rules': [
         'geosite:category-ads',
-        'geosite:category-ads-ir',
-    ],
-}
-OPT_RULESET_GROUPS['ir']['🛑 malware'] = {
-    'default': 'on',
-    'outbound': 'block_out',
-    'rules': [
-        # 恶意软件
-        'geosite:malware',
-        'geoip:malware',
-        # 钓鱼网站
-        'geoip:phishing',
-        'geosite:phishing',
-        # 后台挖矿
-        'geosite:cryptominers',
+        'geosite:category-ads-ir',  # 123
     ],
 }
 OPT_RULESET_GROUPS['ir']['☁️ parspack'] = {
