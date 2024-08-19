@@ -154,16 +154,6 @@ OPT_RULESET_GROUPS['cn'] = {
             'acl:ChinaMedia',  # 414
         ],
     },
-    '🌏 国外穿墙': {
-        'default': 'on',
-        'outbound': 'selector_out',
-        'rules': [
-            'geosite:geolocation-!cn',  # 170K
-            'geosite:google',  # 8.7K
-            'acl:ProxyGFWlist',  # 37K
-            'acl:ProxyMedia',  # 2.9K
-        ],
-    },
     'Ⓜ️ 微软Bing': {
         'default': 'off',
         'outbound': 'selector_out',
@@ -229,6 +219,16 @@ OPT_RULESET_GROUPS['cn'] = {
         'outbound': 'direct_out',
         'rules': [
             'acl:NetEaseMusic',
+        ],
+    },
+    '🌏 国外穿墙': {
+        'default': 'on',
+        'outbound': 'selector_out',
+        'rules': [
+            'geosite:geolocation-!cn',  # 170K
+            'geosite:google',  # 8.7K
+            'acl:ProxyGFWlist',  # 37K
+            'acl:ProxyMedia',  # 2.9K
         ],
     },
 }
