@@ -135,25 +135,6 @@ OPT_RULESET_GROUPS['cn'] = {
             'acl:BanADCompany',  # 1.44 KB
         ],
     },
-    '🎯 国内直连': {
-        'default': 'on',
-        'outbound': 'direct_out',
-        'rules': [
-            # 'acl:LocalAreaNetwork',
-            # geosite:cn # 355K  geolocation-cn 和 tld-cn 的合集
-            #       'geosite:geolocation-cn',  # 31K
-            # geoip:cn # 42K
-            'acl:ChinaIp',  # 24K
-            'acl:ChinaDomain',  # 3.6K
-            'acl:ChinaCompanyIp',  # 1.1K
-            # 'geosite:google-cn', # 1.8K
-            'acl:GoogleCN',  # 345
-            'acl:UnBan',  # 281
-            'acl:SteamCN',  # 271
-            'acl:Download',  # 178
-            'acl:ChinaMedia',  # 414
-        ],
-    },
     'Ⓜ️ 微软Bing': {
         'default': 'off',
         'outbound': 'selector_out',
@@ -205,7 +186,7 @@ OPT_RULESET_GROUPS['cn'] = {
     ],
     '📹 油管视频': ['geosite:youtube'],
     '🎥 奈飞视频': ['geoip:netflix', 'geosite:netflix'],
-    '📺 巴哈姆特': 'acl:Bahamut',
+    # '📺 巴哈姆特': 'acl:Bahamut',
     '📺 哔哩哔哩': {
         'default': 'on',
         'outbound': 'direct_out',
@@ -219,6 +200,25 @@ OPT_RULESET_GROUPS['cn'] = {
         'outbound': 'direct_out',
         'rules': [
             'acl:NetEaseMusic',
+        ],
+    },
+    '🎯 国内直连': {
+        'default': 'on',
+        'outbound': 'direct_out',
+        'rules': [
+            # 'acl:LocalAreaNetwork',
+            # geosite:cn # 355K  geolocation-cn 和 tld-cn 的合集
+            #       'geosite:geolocation-cn',  # 31K
+            # 'geoip:cn' # 42K
+            'acl:ChinaIp',  # 24K
+            'acl:ChinaDomain',  # 3.6K
+            'acl:ChinaCompanyIp',  # 1.1K
+            # 'geosite:google-cn', # 1.8K
+            # 'acl:GoogleCN',  # 345
+            'acl:UnBan',  # 281
+            'acl:SteamCN',  # 271
+            'acl:Download',  # 178
+            'acl:ChinaMedia',  # 414
         ],
     },
     '🌏 国外穿墙': {
