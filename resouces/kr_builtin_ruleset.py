@@ -103,16 +103,11 @@ OPT_RULESET_GROUPS['default'] = {
             'geosite:apple-update',
         ],
     },
+    '🌏 Google': ["geosite:google", "geoip:google"],
     '📲 Telegram': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
-    '🎮 Game': [
-        'acl:Epic',
-        'acl:Origin',
-        'acl:Sony',
-        'acl:Steam',
-        'acl:Nintendo',
-    ],
+    '🎮 Game': ['acl:Epic', 'acl:Origin', 'acl:Sony', 'acl:Steam', 'acl:Nintendo'],
     '📹 YouTube': ['geosite:youtube'],
     '🎥 Netflix': ['geoip:netflix', 'geosite:netflix'],
 }
@@ -167,6 +162,7 @@ OPT_RULESET_GROUPS['cn'] = {
             'geosite:apple-update',
         ],
     },
+    '🌏 Google': ["geosite:google", "geoip:google"],
     '📢 谷歌FCM': {
         'default': 'off',
         'outbound': 'direct_out',
