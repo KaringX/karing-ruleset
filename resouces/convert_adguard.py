@@ -59,21 +59,15 @@ def converto_srs(out_path: str, file_name: str) -> bool:
 
     # if result.stderr:
     # Filter out lines that start with "DEBUG"
-    output_lines = [
+    error_lines = [
         line for line in result.stderr.splitlines() if not line.startswith("DEBUG")
     ]
+    error_msg = error_lines[-1] if len(error_lines) > 0 else ""
 
     debug_log(
-        f"Convert code:{result.returncode} error:{output_lines[-1]} output:{result.stdout}"
+        f"Convert code:{result.returncode} error:{error_msg} output:{result.stdout}"
     )
-    return (
-        True
-        if (
-            len(output_lines) > 0
-            and remove_ansi_escape_codes(output_lines[-1]).startswith('INFO')
-        )
-        else False
-    )
+    return True if remove_ansi_escape_codes(error_msg).startswith('INFO') else False
     # END converto_srs
 
 
