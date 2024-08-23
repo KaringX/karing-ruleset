@@ -67,7 +67,12 @@ def converto_srs(out_path: str, file_name: str) -> bool:
         f"Convert code:{result.returncode} error:{output_lines[-1]} output:{result.stdout}"
     )
     return (
-        True if remove_ansi_escape_codes(output_lines[-1]).startswith('INFO') else False
+        True
+        if (
+            len(output_lines) > 0
+            and remove_ansi_escape_codes(output_lines[-1]).startswith('INFO')
+        )
+        else False
     )
     # END converto_srs
 
