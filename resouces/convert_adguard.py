@@ -26,14 +26,14 @@ from helper.helper import (
 SING_BOX_EXEC_PATH = None
 
 ADGUARD_CONFIG_FILTER_LIST = [
-    # {
-    #     'name': 'AdGuardFilter',
-    #     'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json',
-    # },
-    # {
-    #     'name': 'PopupFilter',
-    #     'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration_popup_filter.json',
-    # },
+    {
+        'name': 'AdGuardFilter',
+        'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json',
+    },
+    {
+        'name': 'PopupFilter',
+        'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration_popup_filter.json',
+    },
     {
         'name': 'ppfeuferFilter',
         'source': 'https://raw.githubusercontent.com/ppfeufer/adguard-filter-list/master/hostlist-compiler-config.json',
