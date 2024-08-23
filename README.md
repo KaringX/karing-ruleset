@@ -126,5 +126,14 @@ https://fastly.jsdelivr.net/gh/karingX/karing-ruleset@sing/ACL4SSR/BanAD.srs
 | ProxyLite.srs         | 规则碎片-代理        | 比较精简的代理列表，包含常用的，以及被污染的域名             |
 
 
-
+# AdGuardSDNSFilter
+- AdGuardFilter
+    - source: https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json
+    - srs list: [AdGuardFilter.list](https://github.com/KaringX/karing-ruleset/tree/sing/AdGuard/AdGuardFilter.list)
+- PopupFilter
+    - source: https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration_popup_filter.json
+    - srs list: [PopupFilter.list](https://github.com/KaringX/karing-ruleset/tree/sing/AdGuard/PopupFilter.list)
+- ppfeuferFilter
+    - source: https://raw.githubusercontent.com/ppfeufer/adguard-filter-list/master/hostlist-compiler-config.json
+    - srs list: [ppfeuferFilter.list](https://github.com/KaringX/karing-ruleset/tree/sing/AdGuard/ppfeuferFilter.list)
 
