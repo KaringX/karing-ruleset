@@ -26,14 +26,14 @@ from helper.helper import (
 SING_BOX_EXEC_PATH = None
 
 ADGUARD_CONFIG_FILTER_LIST = [
-    {
-        'name': 'AdGuardFilter',
-        'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json',
-    },
-    {
-        'name': 'PopupFilter',
-        'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration_popup_filter.json',
-    },
+    # {
+    #     'name': 'AdGuardFilter',
+    #     'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json',
+    # },
+    # {
+    #     'name': 'PopupFilter',
+    #     'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration_popup_filter.json',
+    # },
     {
         'name': 'ppfeuferFilter',
         'source': 'https://raw.githubusercontent.com/ppfeufer/adguard-filter-list/master/hostlist-compiler-config.json',
@@ -42,7 +42,7 @@ ADGUARD_CONFIG_FILTER_LIST = [
 
 SOURCE_REPLACE_DICT = {
     # # Get OISD list, since the HostlistCompiler can't fetch it for whatever reason » https://github.com/AdguardTeam/HostlistCompiler/issues/58
-    '../oisd.txt': 'https://big.oisd.nl/',
+    "../oisd.txt": "https://big.oisd.nl/",
 }
 
 
@@ -100,8 +100,6 @@ def main(out_path: str = None):
 
 def compile_filterlist(out_path: str, item: dict):
     source = item['source']
-    if source in SOURCE_REPLACE_DICT:
-        source = SOURCE_REPLACE_DICT[source]
 
     name = correct_name(item['name'])
     out_path2 = os.path.join(out_path, name)
@@ -133,9 +131,11 @@ def compile_filterlist(out_path: str, item: dict):
 
 
 def compile_filterone(out_path: str, item: dict) -> bool:
-    name = correct_name(item['name'])
     source = item['source']
+    if source in SOURCE_REPLACE_DICT:
+        source = SOURCE_REPLACE_DICT[source]
 
+    name = correct_name(item['name'])
     debug_log(f"\n\tdownloading [ {name} ] => {source}")
     content = get_url_content(source)
     if content is None:

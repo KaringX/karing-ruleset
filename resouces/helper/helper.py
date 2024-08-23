@@ -59,12 +59,15 @@ def correct_name(text: str) -> str:
     # Apply the replacements
     replaced_text = ''.join(replacements.get(c, c) for c in text)
 
-    # Collapse consecutive "-" into a single "-"
+    # Collapse consecutive "-" or "_" into a single "_"
     collapsed_text = re.sub(r'-+', '-', replaced_text)
     collapsed_text = re.sub(r'_+', '_', collapsed_text)
 
     # Remove trailing "-" or "_"
     final_text = re.sub(r'[-_]+$', '', collapsed_text)
+
+    # Replace "-_" and "_-" with "_"
+    final_text = re.sub(r'-_|_-', '_', final_text)
 
     return final_text
 
@@ -78,6 +81,7 @@ def remove_ansi_escape_codes(text: str) -> str:
 if __name__ == '__main__':
     # text = "example  string//with spaces---and////slashes"
     text = 'uBlock-filters-–-Resource-abuse-'
+    text = 'Dandelion-Sprouts-Anti-Malware-List-_for-AdGuard-Home-and-for-AdGuard-for-Android_Windows-DNS-filtering'
     print(correct_name(text))
 
     # text = '\x1b[36mINFO\x1b[0m[0000] parsed rules: 778/1450'
