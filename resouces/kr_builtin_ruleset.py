@@ -104,12 +104,14 @@ OPT_RULESET_GROUPS['default'] = {
         ],
     },
     '🌏 Google': ["geosite:google", "geoip:google"],
+    '🎧 TikTok': ['geosite:tiktok'],
+    '📸 Instagram': ['geosite:instagram'],
+    '📹 YouTube': ['geosite:youtube'],
+    '🎥 Netflix': ['geoip:netflix', 'geosite:netflix'],
     '📲 Telegram': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
     '🎮 Game': ['acl:Epic', 'acl:Origin', 'acl:Sony', 'acl:Steam', 'acl:Nintendo'],
-    '📹 YouTube': ['geosite:youtube'],
-    '🎥 Netflix': ['geoip:netflix', 'geosite:netflix'],
 }
 
 ## start china
@@ -180,6 +182,8 @@ OPT_RULESET_GROUPS['cn'] = {
         'acl:Steam',
         'acl:Nintendo',
     ],
+    '🎧 TikTok': ['geosite:tiktok'],
+    '📸 Instagram': ['geosite:instagram'],
     '📹 油管视频': ['geosite:youtube'],
     '🎥 奈飞视频': ['geoip:netflix', 'geosite:netflix'],
     # '📺 巴哈姆特': 'acl:Bahamut',
