@@ -80,6 +80,13 @@ jobs:
         run: |
           python workflow/resouces/convert_adguard.py ./sing-rule/
 
+      - name: rm sing-box files
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-rule || exit 1
+          rm -rf sing-box* LICENSE README.md
+
       - name: Git push assets to "sing-rule" branch
         run: |
           cd sing-rule || exit 1
