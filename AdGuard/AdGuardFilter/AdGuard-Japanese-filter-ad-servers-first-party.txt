@@ -1,0 +1,25 @@
+!
+! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
+! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
+!
+! Good: ||ad.doubleclick.net^
+! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
+!
+||ads.nicovideo.jp^
+||api.ad-platform.jmty.jp^
+||adserv2.suumo.jp^
+||ad.woman.mynavi.jp^
+||shop.vapelog.jp^$third-party
+||s-ad.rmp.rakuten.co.jp^
+||ad.jp.ap.valuecommerce.com^
+||valuecommerce.ne.jp^$third-party
+||sgad.surfsnow.jp^
+||mbadv.nan.co.jp^
+||creative.live.tktube.com^
+||ads.world-fusigi.net^
+||ad.eloan.co.jp^
+||ad.abema.io^
+||kok.eroterest.net^
+||ad-hatena.com^
+||advert.punyu.com^

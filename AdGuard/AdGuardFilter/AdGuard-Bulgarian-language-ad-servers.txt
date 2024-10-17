@@ -1,0 +1,124 @@
+!
+! This section contains the list of rules that are supposed to work on Bulgarian websites.
+!
+! Good: any type of the rules will be good
+! Bad: @@||example.org^$stealth
+!
+! NOTE: Ad servers
+!
+||hdvmyo.com^
+||adsy.mail.bg^
+!
+! NOTE: Allow-list
+!
+! https://github.com/AdguardTeam/AdguardFilters/issues/51510
+!+ PLATFORM(windows, mac, android)
+@@||mail.bg/message/$jsinject,elemhide,extension
+!+ PLATFORM(windows, mac, android)
+@@||mail.bg/message/$xmlhttprequest,other
+!
+! NOTE: Anti-adblock
+!
+! https://github.com/AdguardTeam/AdguardFilters/issues/190807
+! https://github.com/AdguardTeam/AdguardFilters/issues/187565
+businessnovinite.bg,btv.bg,btvsport.bg#$#.vjs-control-bar { z-index: 1; }
+businessnovinite.bg,btv.bg,btvsport.bg#$#.vjs-continue-watching-bar { display: none !important; }
+businessnovinite.bg,btv.bg,btvsport.bg#$?##leading_video_player_autoplay_wrapper { remove: true; }
+businessnovinite.bg,btv.bg,btvsport.bg#$##leading_video_player_autoplay_main_wrapper { display: block !important; }
+btvplus.bg,businessnovinite.bg,btv.bg,btvsport.bg#%#//scriptlet('set-constant', 'isEnhancedContentAvailable', 'undefined')
+||imasdk.googleapis.com/js/sdkloader/ima3.js$script,redirect=google-ima3,domain=businessnovinite.bg|btv.bg|btvsport.bg|btvplus.bg
+! https://github.com/AdguardTeam/AdguardFilters/issues/190638
+! https://github.com/AdguardTeam/AdguardFilters/issues/178821
+play.nova.bg#%#//scriptlet('prevent-xhr', '/adsbygoogle|googima\.js/')
+!#if (adguard_app_ios || adguard_ext_safari || adguard_ext_android_cb)
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=play.nova.bg
+@@||ssl.p.jwpcdn.com/player/v/*/googima.js$xmlhttprequest,domain=play.nova.bg
+!#endif
+! https://github.com/AdguardTeam/AdguardFilters/issues/171750
+pik.bg#%#//scriptlet('prevent-element-src-loading', 'script', 'ima3.js')
+!+ PLATFORM(ios, ext_safari, ext_android_cb)
+@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=pik.bg
+! https://github.com/AdguardTeam/AdguardFilters/issues/161796
+! https://github.com/AdguardTeam/AdguardFilters/issues/161641
+! https://github.com/AdguardTeam/AdguardFilters/issues/159344
+@@||vivo.bg/gpt.js
+money.bg,webcafe.bg,topsport.bg#%#//scriptlet('set-constant', 'isuBlock', 'false')
+! https://github.com/AdguardTeam/AdguardFilters/issues/157410
+gledaitv.live###abDetectorModal
+gledaitv.live#%#//scriptlet('set-constant', 'ABDetector', 'noopFunc')
+! https://github.com/AdguardTeam/AdguardFilters/issues/170783
+||cdn.bg-gledai.*/fuck_
+/rotate.php?id=$script,domain=bg-gledai.*
+! play.nova.bg - anti adblock
+@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=play.nova.bg
+!
+@@||smartadserver.com/call/pubx/*/M/$domain=vbox7.com
+! https://github.com/AdguardTeam/AdguardFilters/issues/7027
+@@||seirsanduk.com/ad-server.js
+seirsanduk.com#%#window.canRunAds = true;
+! https://github.com/AdguardTeam/AdguardFilters/issues/148045
+bg-gledai.*#%#//scriptlet('set-constant', 'chp_adblock_browser', 'noopFunc')
+!#if (adguard_ext_android_cb)
+@@||pagead2.googlesyndication.com/pagead/js/adsbygoogle.js$domain=bg-gledai.*
+@@||bg-gledai.$generichide
+!#endif
+! https://github.com/AdguardTeam/AdguardFilters/issues/64914
+@@||play.nova.bg/prebid-ads.js
+play.nova.bg#%#//scriptlet("set-constant", "_spabia", "true")
+!
+! https://github.com/AdguardTeam/AdguardFilters/issues/60574
+blitz.bg#$#div[id^="div-gpt-ad"] { position: absolute!important; left: -3000px!important; }
+!
+! NOTE: Specific
+!
+news.bg,lifestyle.bg,topsport.bg,webcafe.bg#%#//scriptlet('remove-node-text', 'script', 'function initsite')
+news.bg,lifestyle.bg,topsport.bg##div[class*="banner-"]
+manager.bg##.central-banner
+pik.bg##div[class^="banners"]
+zamunda.ch##a[href^="https://bgkoleda.bg/"]
+telegraph.bg##.banner
+zamunda.ch##.top_blocks a[href="redirecto.php"]
+zamunda.ch##.unique-centerpos
+zamunda.ch##.unique-searchpos
+||media.mediadirectory.net/js/code.min.js
+24rodopi.com,rodopi24.blogspot.com##.sidebar-inner
+24rodopi.com,rodopi24.blogspot.com##a[style="float:left;width:254px;"]
+24rodopi.com,rodopi24.blogspot.com###HTML14
+bg-gledai.*##.squarebanner
+bg-gledai.*##.featbox
+zamunda.*##a[href^="https://dmsbg.com/"]
+||arenabg.com/ws.js
+arenabg.com##iframe[data-src="https://webcafe.bg/arena.html"]
+novsport.com##div[style^="float: left; width: 300px; height: 250px;"][style$="overflow: hidden"]
+novsport.com#?#h1[class]:contains(Реклама)
+novsport.com#?#.rounded-left:has(> div[class] > h1[class]:contains(Реклама))
+gotvach.bg##.sidecolumn > div[class^="gid"]
+gotvach.bg##div[class$="-content"] > .gidm
+gotvach.bg##div[class$="-content"] > .text .giwrp
+zamunda.ch,zamunda.net##.clickads
+zamunda.ch,zamunda.net##.speur
+capital.bg##.banner-box
+vbox7.com##.vbox-cap-adw
+arenabg.com##div[id^="spot-"]
+||trud.bg/public/images/autodoc.bg_300x50.gif
+gotvach.bg###artbot
+gotvach.bg###mplx
+gotvach.bg###comm
+gotvach.bg###artvert
+gotvach.bg###dvdt
+gotvach.bg###embed
+||mail.bg/images/brandings/
+mail.bg##.branding_content_link
+mail.bg###main-billboard-spacer
+mail.bg###mail_ad
+||webcafe.bg^$domain=arenabg.com
+arenabg.com#?#.row > div[class] > div.panel-arena:has(> div.panel-heading > a[target="_blank"])
+seirsanduk.us#?##program > center:contains(Реклама)
+cars.bg#$#body { background: #fafafa!important; }
+cars.bg##a[href^="http://www.ads.bg/"]
+seirsanduk.com###fbox-background
+||dir.bg/js_ext.php?placeid=*&affiliate_id=*
+digital.bg##.banner-holder
+kliuki.bg##img[width="650"][height="80"]
+kliuki.bg##img[width="960"][height="90"]
+kliuki.bg###container > div[style="float:left;"] > div[style]

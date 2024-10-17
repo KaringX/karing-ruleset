@@ -1,0 +1,10 @@
+AdGuard-Base-filter-ad-servers.srs
+AdGuard-Base-filter-ad-servers-first-party.srs
+AdGuard-Base-filter-ad-servers-foreign.srs
+EasyList-ad-servers.srs
+AdGuard-Mobile-Ads-filter-ad-servers.srs
+AdGuard-common-Cyrillic-filters-ad-servers.srs
+AdGuard-Russian-filter-ad-servers-first-party.srs
+Liste-FR.srs
+ABPindo-ad-servers.srs
+ABPindo-ad-servers-third-party.srs
