@@ -1,0 +1,117 @@
+# Title: NextDNS CNAME Cloaking Blocklist
+#
+# https://github.com/nextdns/cname-cloaking-blocklist
+#
+# Important: For this blocklist to work, the blocking logic must wildcard match
+# (domain and all its multi-level subdomains) CNAMEs against the domains in this list.
+
+# Eulerian
+# https://www.eulerian.com
+eulerian.net
+
+# AT Internet (formerly XiTi)
+# https://www.atinternet.com
+at-o.net
+
+# Keyade
+# https://www.keyade.com
+k.keyade.com
+k.madmetrics.com
+
+# Adobe Experience Cloud (formerly Omniture)
+# https://business.adobe.com
+2o7.net
+data.adobedc.net
+sc.adobedc.net
+sc.omtrdc.net
+
+# Criteo
+# https://www.criteo.com
+dnsdelegation.io
+storetail.io
+
+# Commanders Act
+# https://www.commandersact.com
+tagcommander.com
+
+# Wizaly
+# https://www.wizaly.com
+wizaly.com
+
+# TraceDock
+# https://tracedock.com
+a351fec2c318c11ea9b9b0a0ae18fb0b-1529426863.eu-central-1.elb.amazonaws.com
+a5e652663674a11e997c60ac8a4ec150-1684524385.eu-central-1.elb.amazonaws.com
+a88045584548111e997c60ac8a4ec150-1610510072.eu-central-1.elb.amazonaws.com
+afc4d9aa2a91d11e997c60ac8a4ec150-2082092489.eu-central-1.elb.amazonaws.com
+
+# Ingenious Technologies
+# https://www.ingenioustechnologies.com
+affex.org
+
+# Webtrekk
+# https://www.webtrekk.com
+webtrekk.net
+wt-eu02.net
+
+# Otto Group
+# https://ottogroup.media
+oghub.io
+
+# NP6 by ChapsVision
+# https://www.chapsvision.com/marketing-automation
+tracking.bp01.net
+
+# A8.net
+# https://www.a8.net
+trck.a8.net
+
+# actionlink
+# https://actionlink.jp
+mm.actionlink.jp
+
+# AD EBiS
+# https://www.ebis.ne.jp
+cname.ebis.ne.jp
+
+# AdSpyglass
+# https://www.adspyglass.com
+0i0i0i0.com
+
+# Act-On
+# https://act-on.com
+actonservice.com
+actonsoftware.com
+
+# Branch
+# https://branch.io
+thirdparty.bnc.lt
+
+# DataUnlocker
+# https://dataunlocker.com
+ddns.dataunlocker.com
+
+# Fathom
+# https://www.fathomhq.com
+starman.fathomdns.com
+
+# adcloud
+# https://www.adcloud.jp
+ad-cloud.jp
+
+# Oracle Eloqua
+# https://www.oracle.com/cx/marketing
+hs.eloqua.com
+
+# Plausible Analytics
+# https://plausible.io
+custom.plausible.io
+
+# Pardot
+# https://www.pardot.com
+go.pardot.com
+
+# Lead Forensics
+# https://www.leadforensics.com
+# Note: not directly disguising itself as first-party, but cloaking the destination behind plenty of random domains.
+ghochv3eng.trafficmanager.net
