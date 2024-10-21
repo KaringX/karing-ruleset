@@ -1,0 +1,58 @@
+!# Server iklan
+!#
+!# --------------------------------------------------------
+!#
+||p.jwpcdn.com/*/vast.js$script
+!
+/^https?:\/\/(?:ak\.)?[a-z]{6,12}\.(?:com|net)\/4\/\d{7}/$doc,frame,popup
+!
+/\/assets\/jquery\/jquery-\d\.\d\.(?:\d\.)?min\.js\?(?:v=2)?&?type=(?:adult|mainstream)$/$1p,script
+!
+/^https:\/\/[a-z]{3,5}\.[a-z]{10,14}\.top\/[a-z]{10,16}\/[a-z]{5,6}(?:\?d=\d)?$/$3p,match-case,script,xhr,to=top
+!# regex
+/\/t\/[0-9]{3}\/[0-9]{3}\/a[0-9]{4,9}\.js$/$script
+/^https:\/\/[0-9a-f]{10}\.[0-9a-f]{10}\.com\/[0-9a-f]{32}\.js$/$3p,script,to=com
+/^https?:\/\/(?:[a-z]{2}\.)?[0-9a-z]{5,16}\.[a-z]{3,7}\/[a-z](?=[a-z]{0,25}[0-9A-Z])[0-9a-zA-Z]{3,26}\/\d{4,5}(?:\?[_v]=\d+)?$/$3p,match-case,script,redirect=noop.js
+/^https?:\/\/(?:[a-z]{2}\.)?[0-9a-z]{7,16}\.com\/[a-z](?=[a-z]{0,25}[0-9A-Z])[0-9a-zA-Z]{3,26}\/\d{4,5}\??(?:_=\d+|v=\d)?$/$3p,frame,match-case,popup,xhr,to=com
+/^https?:\/\/(?:[a-z]{2}\.)?[0-9a-z]{7,16}\.website\/[a-z](?=[a-z]{0,25}[0-9A-Z])[0-9a-zA-Z]{3,26}\/\d{4,5}\??(?:_=\d+|v=\d)?$/$3p,frame,match-case,popup,xhr
+/^https?:\/\/(?:www\.|[0-9a-z]{7,10}\.)?[-0-9a-z]{5,}\.com\/\/?(?:[0-9a-f]{2}\/){2,3}[0-9a-f]{32}\.js/$3p,script,xhr,redirect=noop.js,to=com
+/^https?:\/\/[0-9a-z]{13,14}\.cloudfront\.net\/\?[a-z]{3,5}=\d{6,7}$/$3p,script,xhr
+! globalThis
+/^https?:\/\/[0-9a-f]{50,}\.s3\.amazonaws\.com\/[0-9a-f]{10}$/$3p,xhr
+/^https?:\/\/s3\.us-east-1\.amazonaws\.com\/[0-9a-f]{50,}\/[0-9a-f]{10}$/$3p,xhr
+! propeller new variants
+.top/event|$3p,xhr
+.xyz/event|$3p,xhr
+/^https?:\/\/[a-z]{8,15}\.top(\/(?:\d{1,5}|0NaN|articles?|browse|index|movie|news|pages?|static|view|web|wiki)){1,4}(?:\.html|\/)$/$3p,frame,match-case
+/^https?:\/\/[a-z]{8,15}\.top\/(?!api|available|team)[a-z]{4,}\.json$/$3p,match-case,xhr
+/^https?:\/\/[a-z]{8,15}\.top\/[-a-z]{4,}\.css\?aHR0c[\/0-9a-zA-Z]{33,}=?=?$/$3p,css,match-case
+/^https?:\/\/[a-z]{8,15}\.top\/[a-z]{4,}\.png\?aHR0c[\/0-9a-zA-Z]{33,}=?=?$/$3p,image,match-case
+/^https?:\/\/[a-z]{8,15}\.xyz(\/(?:\d{1,5}|0NaN|articles?|browse|index|movie|news|pages?|static|view|web|wiki)){1,4}(?:\.html|\/)$/$3p,frame,match-case
+/^https?:\/\/[a-z]{8,15}\.xyz\/(?!api|available|team)[a-z]{4,}\.json$/$3p,match-case,xhr
+/^https?:\/\/[a-z]{8,15}\.xyz\/[-a-z]{4,}\.css\?aHR0c[\/0-9a-zA-Z]{33,}=?=?$/$3p,css,match-case
+/^https?:\/\/[a-z]{8,15}\.xyz\/[a-z]{4,}\.png\?aHR0c[\/0-9a-zA-Z]{33,}=?=?$/$3p,image,match-case
+! hilltopads
+/^https?:\/\/[-a-z]{6,}\.com?\/[a-d][-\.\/_A-Za-z][DHWXm][-\.\/_A-Za-z][59FVZ][-\.\/_A-Za-z][6swyz][-\.\/_A-Za-z][-\/_0-9a-zA-Z][-\.\/_A-Za-z][-\/_0-9a-zA-Z]{22,162}$/$3p,match-case,script,xhr,to=co|com
+/^https?:\/\/[-a-z]{6,}\.info\/[a-d][-\.\/_A-Za-z][DHWXm][-\.\/_A-Za-z][59FVZ][-\.\/_A-Za-z][6swyz][-\.\/_A-Za-z][-\/_0-9a-zA-Z][-\.\/_A-Za-z][-\/_0-9a-zA-Z]{22,162}$/$3p,match-case,script,xhr,to=info
+/^https?:\/\/[-a-z]{6,}\.pro\/[a-d][-\.\/_A-Za-z][DHWXm][-\.\/_A-Za-z][59FVZ][-\.\/_A-Za-z][6swyz][-\.\/_A-Za-z][-\/_0-9a-zA-Z][-\.\/_A-Za-z][-\/_0-9a-zA-Z]{22,162}$/$3p,match-case,script,xhr,to=pro
+/^https?:\/\/[-a-z]{6,}\.xyz\/[a-d][-\.\/_A-Za-z][DHWXm][-\.\/_A-Za-z][59FVZ][-\.\/_A-Za-z][6swyz][-\.\/_A-Za-z][-\/_0-9a-zA-Z][-\.\/_A-Za-z][-\/_0-9a-zA-Z]{22,162}$/$3p,match-case,script,xhr,to=xyz
+!# pp server
+/^https?:\/\/[-a-z]{8,15}\.(?:com|net)\/400\/\d{7}$/$3p,script
+/^https?:\/\/[-a-z]{8,15}\.(?:com|net)\/401\/\d{7}$/$3p,script
+/^https?:\/\/[-a-z]{8,15}\.(?:com|net)\/500\/\d{7}\?/$3p,xhr
+/^https?:\/\/[a-z]{8,15}\.(?:com|net)\/tag\.min\.js$/$3p,script
+/^https?:\/\/[a-z]{8,15}\.[a-z]{2,3}\/5\/\d{6,7}(?:\?_=\d+)?$/$3p,script,xhr
+/^https?:\/\/[a-z]{8,15}\.[a-z]{3}\/5\/\d{7}\/\?/$3p,xhr
+!
+/get/*?zoneid=$script
+/lv/esnk/*$3p,script
+/pfe/current/*$3p,script
+!# ---
+!# AdGuard
+!# ---
+! https://github.com/AdguardTeam/AdguardFilters/blob/08467b7/BaseFilter/sections/general_url.txt#L223
+/[0-9a-f]{32}\/invoke\.js/$3p,script,redirect-rule=noop.js
+! ---
+! Dihapus dalam beberapa bulan
+||fnasmpygwa.com^
+! 205.251.197.235, 205.251.198.251, 205.251.193.177, 205.251.195.134
