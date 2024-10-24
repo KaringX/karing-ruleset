@@ -1,0 +1,47 @@
+!
+! This section contains the list of third-party advertising networks domains.
+! Note, that we only put rules that block full domains here and not URL parts (there's `general_url.txt` for that). Also, it must be domains that are used in a third-party context.
+!
+! Good: ||doubleclick.net^$third-party
+! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||adssubdomain.legitwebsite.com^ (should be in adservers_firstparty.txt)
+!
+!
+||mitself.net^
+||jubbie.de^
+||comparison.financeads.net^$third-party
+||lehrer-finden.de^
+||lokalwerben.t-online.de^
+||quartermedia-ad-service.net^
+||ad.dl.mainpost.de^
+||plx.eispop.com^
+||oddsserve.com^$third-party
+||widget.marktjagd.de^
+||cwi.re^$third-party
+||a.zdg.de^
+||cockpit.symplr.de^$third-party
+||afl-static-cdn.newbiz-prod.stroeerws.de^$third-party
+||embed.contentverticals.de^$third-party
+||ablyft.com^$third-party
+||tikibihu.com^$third-party
+||partners2.das-onlinespiel.de^$third-party
+||intextlinks.idg.zone^$third-party
+||megadeliveryn.com^$third-party
+||hybrid-prd.ad-prd.s.joyn.de^
+||kunner.wiesentbote.de^
+||yieldlove-ad-serving.net^
+||partner.shop.vorwerk.de^$third-party
+||orbidder.otto.de^
+||nur.gratis^$third-party
+||ikjnbvf.de^
+||emmi-findet.de^
+||app.bidhead.net^$third-party
+||widgets.tracdelight.io^$third-party
+||trbo.com^$third-party
+||adquality.ch^$third-party
+||sv.sheego.de^$third-party
+||azol.de^$third-party
+||twiago.com^$third-party
+||bauernative.com^$third-party
+||adshot.de^$third-party
+||content.acc-hd.de^$third-party

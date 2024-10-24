@@ -1,0 +1,64 @@
+!
+! This section contains the list of advertising networks domains, which are hosted on non advertising sites as subdomains.
+! Note, that we only put rules that block full subdomains here and not URL parts (there's `general_url.txt` for that).
+!
+! Good: ||ad.doubleclick.net^
+! Bad: /banner.jpg (should be in general_url.txt)
+! Bad: ||legitwebsite.com^$third-party (should be in adservers.txt)
+!
+!
+||bitcasino365.b-cdn.net^
+||d2pspvbdjxwkpo.cloudfront.net^
+||rotorfon.go-prod.dogt.xyz^
+||r.yabancidizi.in^
+||ads.dygdigital.com^
+||ads.igfhaber.com^
+||ad.hepsiburada.com^
+||ad.reklm.com^
+||ads.motosiklet.net^
+||ad.sigortagundem.biz^
+||cdn.eksiup.com^
+||url.isimsepeti.net^
+||ads.gencgazete.net^
+||a.doganburda.com^
+||ad.dline.com.tr^
+||ad.ntvmsnbc.com^
+||ad.sacitaslan.com^
+||ad.webservis.gen.tr^
+||ad.yemeksepeti.com^
+||addata.exxen.com^
+||adn.bursadabugun.com^
+||ads-wordego.azureedge.net^
+||ads.gercekgundem.com^
+||ads.inegolonline.com^
+||ads.macsonuclari.mobi^
+||ads.nexage.com^
+||ads.o-networkaffiliates.com^
+||ads.oyungemisi.com^
+||ads.pivol.net^
+||ads.sondakika.com^
+||adserve.donanimhaber.com^
+||adserver.a24.com.tr^
+||adserver.bafrahaber.com^
+||adsp.ciner.com.tr^
+||adsp.haberturk.com^
+||androidads23.adcolony.com^
+||banner.kanald.com.tr^
+||banner.setrowid.com^
+||banners.tempobet.com^
+||campaign.nmobs.com^
+||partnerad.l.google.com^
+||reklam.arabul.com^
+||reklam.emlakkulisi.com^
+||reklam.turkmmo.com^
+||reklam.memurlar.net^
+||reklam.milliyet.com.tr^
+||reklam.misli.com^
+||reklam.mynet.com^
+||reklam.softreklam.com^
+||reklam.star.com.tr^
+||reklam.yonlendir.com^
+||reklam1.akhisar.bel.tr^
+||savoy.cubecdn.net^
+||tagsadvancenative-glb8iionio2cozc.netdna-ssl.com^
+||ttauri.livescience.com^
