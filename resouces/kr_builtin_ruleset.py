@@ -238,7 +238,7 @@ OPT_RULESET_GROUPS['cn'] = {
 
 ##start ru
 OPT_RULESET_GROUPS['ru'] = OPT_RULESET_GROUPS['default'].copy()
-OPT_RULESET_GROUPS['ru']['🇷🇺 antizapret'] = {
+OPT_RULESET_GROUPS['ru']['🇷🇺 Anticensor'] = {
     'default': 'on',
     'outbound': 'selector_out',
     'rules': [
