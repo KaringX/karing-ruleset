@@ -63,9 +63,9 @@ OPT_RULESET_GROUPS['default'] = {
         'rules': [
             # 恶意软件
             'geosite:malware',  # 2.8K
-            'geoip:malware',  # 7.3K
+            # 'geoip:malware',  # 7.3K
             # 钓鱼网站
-            'geoip:phishing',  # 50
+            # 'geoip:phishing',  # 50
             'geosite:phishing',  # 7.2K
             # 后台挖矿
             'geosite:cryptominers',  # 3.7K
@@ -110,6 +110,7 @@ OPT_RULESET_GROUPS['default'] = {
     '🎥 Netflix': ['geoip:netflix', 'geosite:netflix'],
     '📲 Telegram': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
+    '♊ Gemini': ['acl:Gemini'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
     '🎮 Game': ['acl:Epic', 'acl:Origin', 'acl:Sony', 'acl:Steam', 'acl:Nintendo'],
 }
@@ -176,6 +177,7 @@ OPT_RULESET_GROUPS['cn'] = {
     },
     '📲 电报消息': ['geoip:telegram', 'geosite:telegram'],
     '💬 OpenAI': ['geoip:openai', 'geosite:openai'],
+    '♊ Gemini': ['acl:Gemini'],
     '🐱 GitHub': ['geoip:github', 'geosite:github'],
     '🎮 游戏平台': [
         'acl:Epic',
