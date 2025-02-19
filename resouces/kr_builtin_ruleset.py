@@ -63,9 +63,9 @@ OPT_RULESET_GROUPS['default'] = {
         'rules': [
             # 恶意软件
             'geosite:malware',  # 2.8K
-            # 'geoip:malware',  # 7.3K
+            'geoip:malware',  # 7.3K
             # 钓鱼网站
-            # 'geoip:phishing',  # 50
+            'geoip:phishing',  # 50
             'geosite:phishing',  # 7.2K
             # 后台挖矿
             'geosite:cryptominers',  # 3.7K
