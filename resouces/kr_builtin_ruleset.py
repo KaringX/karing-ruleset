@@ -74,7 +74,7 @@ OPT_RULESET_GROUPS['default'] = {
     'Ⓜ️ Bing': {
         'default': 'off',
         'outbound': 'selector_out',
-        'rules': ['geoip:bing', 'geosite:bing'],
+        'rules': ['geosite:bing'],
     },
     'Ⓜ️ OneDrive': {
         'default': 'off',
@@ -136,7 +136,7 @@ OPT_RULESET_GROUPS['cn'] = {
     'Ⓜ️ 微软Bing': {
         'default': 'off',
         'outbound': 'selector_out',
-        'rules': ['geoip:bing', 'geosite:bing'],
+        'rules': ['geosite:bing'],
     },
     'Ⓜ️ 微软云盘': {
         'default': 'off',
@@ -294,7 +294,7 @@ def maker_for_area(area: str, config: dict, root_path: str) -> bool:
         for rule_set in gval['rules']:
             if not rule_file_exists(rule_set, root_path=root_path):
                 debug_log(f"ERR: {msg} {rule_set} srs file not exists")
-                return
+                exit(1)
             # rule set
             route_dict['rule_set'][rule_set] = maker_one_rule_set(rule_set)
             # END for rule set
