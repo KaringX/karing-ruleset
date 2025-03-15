@@ -58,6 +58,13 @@ jobs:
           path: Iran-sing-box-rules
           ref: rule-set
 
+      - name: Checkout hiddify-geo
+        uses: actions/checkout@v4
+        with:
+          repository: hiddify/hiddify-geo
+          path: hiddify-geo
+          ref: rule-set
+
       - name: IR copy geo rules
         env:
           NO_SKIP: true

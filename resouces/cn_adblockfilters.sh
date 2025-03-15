@@ -20,6 +20,9 @@ work_dir=$(realpath "$target_dir")
 target_dir="${work_dir}/chinese"
 sing_exe="${work_dir}/sing-box"
 
+LOG_FILE="merge.log"
+# cat /dev/null > $LOG_FILE
+
 # ———————————————————————————————————————————————————————————————————————————————————————————————
 
 
@@ -69,6 +72,32 @@ function download_adblockfilters() {
 
 }
 
+function merge_hiddify_geo(){
+    src_dir=$(dirname $work_dir)/hiddify-geo/country
+    LOG_FILE="${work_dir}/geo/${LOG_FILE}"
+    echo "merge dir >> ${src_dir}"
+
+    # 遍历country目录下所有以geoip或geosite开头的.srs文件
+    for file1 in $(ls $src_dir/geo*-*.srs); do
+        filename1=${file1##*/}
+        # 修正2：移除多余的$$符号
+        caty=${filename1%%-*}    # 截取第一个"-"前的部分
+        country=${filename1#*-}   # 截取第一个"-"后的部分
+        # echo "类型: $caty, 国家代码: $country"
+
+        # Check if file exists in folder b with the same name
+        file2="$work_dir/geo/$caty/$country"
+
+        # If file not found, print filename
+        if [ ! -f $file2 ]; then
+            cp $file1 $file2
+            echo "hiddify-geo/country/${filename1}" >> $LOG_FILE
+        fi
+
+    done
+}
+
+
 
 # ———————————————————————————————————————————————————————————————————————————————————————————————
 chmod +x $sing_exe
@@ -76,7 +105,8 @@ chmod +x $sing_exe
 mkdir $target_dir ; cd $target_dir
 echo "start<= ${target_dir}"
 
-download_adblockfilters
+# download_adblockfilters
+merge_hiddify_geo
 
 echo "end<= ${target_dir}"
 #END FILE
