@@ -105,7 +105,7 @@ chmod +x $sing_exe
 mkdir $target_dir ; cd $target_dir
 echo "start<= ${target_dir}"
 
-# download_adblockfilters
+download_adblockfilters
 merge_hiddify_geo
 
 echo "end<= ${target_dir}"
