@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain": [
+        "www.speedtest.net.cdn.cloudflare.net",
+        "hk-global-bgp.hkg.speedtest.yecaoyun.com"
+      ],
+      "domain_suffix": [
+        "ooklaserver.net",
+        "ekahau.com",
+        "nperf.com",
+        "speedtestcustom.com",
+        "speedtest.co",
+        "pingtest.net",
+        "fast.com",
+        "ookla.com",
+        "speedtest.im",
+        "webtest.net",
+        "speedtest.net",
+        "cellmaps.com",
+        "cdnst.net",
+        "testmy.net",
+        "ekahau.cloud",
+        "measurementlab.net",
+        "speed2.hinet.net",
+        "speed.hinet.net",
+        "speed.dler.io",
+        "speed.cloudflare.com",
+        "speedtest.xfinity.com",
+        "speed5.ntu.edu.tw",
+        "speed.nccu.edu.tw",
+        "cnspeedtest.cn",
+        "speed.neu6.edu.cn",
+        "speed.nuaa.edu.cn",
+        "speedtest.cn",
+        "speedtest.mfcyun.com",
+        "speedtest.shu.edu.cn",
+        "test.ustc.edu.cn",
+        "test.nju.edu.cn"
+      ],
+      "domain_regex": "^speed\\.(coe|open)\\.ad\\.[a-z]{2,6}\\.prod\\.hosts\\.ooklaserver\\.net$"
+    }
+  ]
+}

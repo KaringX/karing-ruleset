@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain_suffix": [
+        "95311.com",
+        "izto.com",
+        "zt-express.com",
+        "zto.cn",
+        "zto.com",
+        "zto.net",
+        "ztoapp.com",
+        "ztoglobal.com",
+        "ztogroup.com",
+        "ztoyh.com",
+        "izto.com.cn",
+        "mlzt.com.cn"
+      ]
+    }
+  ]
+}

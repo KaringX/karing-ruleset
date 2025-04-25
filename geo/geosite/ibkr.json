@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain_suffix": [
+        "ibkr.com",
+        "interactivebrokers.ca",
+        "interactivebrokers.com",
+        "interactivebrokers.eu",
+        "interactivebrokers.ie",
+        "interactivebrokers.co.in",
+        "interactivebrokers.co.jp",
+        "interactivebrokers.co.uk",
+        "interactivebrokers.com.au",
+        "interactivebrokers.com.hk",
+        "interactivebrokers.com.sg"
+      ]
+    }
+  ]
+}

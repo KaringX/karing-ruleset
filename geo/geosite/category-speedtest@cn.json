@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "domain_suffix": [
+        "cnspeedtest.cn",
+        "speed.neu6.edu.cn",
+        "speed.nuaa.edu.cn",
+        "speedtest.cn",
+        "speedtest.mfcyun.com",
+        "speedtest.shu.edu.cn",
+        "test.ustc.edu.cn",
+        "test.nju.edu.cn"
+      ]
+    }
+  ]
+}
