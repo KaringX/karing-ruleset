@@ -8,10 +8,11 @@
 
 ## Thanks to
 - [meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat/raw/sing/geo)
-- [Chocolate4U-Iran](https://github.com/Chocolate4U/Iran-sing-box-rules/tree/rule-set?tab=readme-ov-file) 、[v2ray/xray client configuration](https://github.com/Chocolate4U/Iran-v2ray-rules?tab=readme-ov-file#computer-usage)
+- [Chocolate4U/Iran-v2ray-rules](https://github.com/Chocolate4U/Iran-v2ray-rules)
 - [ACL4SSR](https://github.com/ACL4SSR/ACL4SSR)
-- Thank you for suggested modifying the recommend rules:
-    - @VPNBrooklynSup (🧑🏻‍💻 پشتیبانی بروکلین «دریچه»)
+- Thank you for suggesting modifications to the recommendation rules and for adding the routing rules of Iran:
+    - [@AmirhosseinBrooklyn](https://github.com/AmirhosseinBrooklyn) (BrooklynVPN & Daricheh)
+    - [@Phoenix-999](https://github.com/Phoenix-999)
 - [savely-krasovsky/antizapret-sing-box](https://github.com/savely-krasovsky/antizapret-sing-box/)
     - Lists of domain and IPs blocked in Russia in Rule Set form
 - [runetfreedom/russia-v2ray-rules-dat](https://github.com/runetfreedom/russia-v2ray-rules-dat)
@@ -27,7 +28,7 @@
     - [Improve domain suffix match behavior](https://github.com/SagerNet/sing/commit/4d96f15eca075f4b5535053304d54812fdfa96e0)
 
 # GeoIP/GeoSite
-## russia
+## 🇷🇺 Russia
 - howto use [runetfreedom/russia-v2ray-rules-dat](https://github.com/runetfreedom/russia-v2ray-rules-dat) or  [savely-krasovsky/antizapret-sing-box](https://github.com/savely-krasovsky/antizapret-sing-box/) in karing
     - be like: `antizapret.srs`
     - Add New Diversion Group
@@ -54,7 +55,7 @@
 
 
 
-## iran
+## <img src="https://flagofiran.com/files/flag-of-iran-emoji-ios.png" alt="Iran emoji" style="width:1em; height:1em; vertical-align:text-bottom;"> Iran
 - The source files about Iran come from **Chocolate4U**
     ```
     geoip/
@@ -128,7 +129,11 @@
 
 ## 下载链接
 ### 方案1 github
-- 比如需要国内IP直连, 对应文件为 `ChinaIp.srs`
+### Chocolate4U GeoIP/GeoSite (Iran)
+- **GeoIP**: `geoip.dat` from [Chocolate4U Latest Release](https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/latest-release/geoip.dat)
+- **GeoSite**: `geosite.dat` from [Chocolate4U Latest Release](https://raw.githubusercontent.com/Chocolate4U/Iran-v2ray-rules/latest-release/geosite.dat)
+
+### ChinaIp.srs
 - 访问链接:
 https://raw.githubusercontent.com/KaringX/karing-ruleset/sing/ACL4SSR/ChinaIp.srs
 
@@ -174,4 +179,3 @@ https://fastly.jsdelivr.net/gh/karingX/karing-ruleset@sing/ACL4SSR/BanAD.srs
 - ppfeuferFilter
     - source: https://raw.githubusercontent.com/ppfeufer/adguard-filter-list/master/hostlist-compiler-config.json
     - srs list: [ppfeuferFilter.list](https://github.com/KaringX/karing-ruleset/tree/sing/AdGuard/ppfeuferFilter.list)
-
