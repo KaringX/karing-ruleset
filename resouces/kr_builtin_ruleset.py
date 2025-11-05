@@ -396,7 +396,7 @@ def main():
 
     root_path = sys.argv[1]
     if not os.path.isdir(root_path):
-        deug_log(f"path:{root_path} not dir")
+        debug_log(f"path:{root_path} not dir")
         return
 
     root_path = os.path.abspath(root_path)
