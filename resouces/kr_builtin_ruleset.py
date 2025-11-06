@@ -253,7 +253,7 @@ OPT_RULESET_GROUPS['ru']['🇷🇺 Anticensor'] = {
 ##start iran
 OPT_RULESET_GROUPS['ir'] = OPT_RULESET_GROUPS['default'].copy()
 OPT_RULESET_GROUPS['ir']['🛑 Adblock'] = {
-    'default': 'off',
+    'default': 'on',
     'outbound': 'block_out',
     'rules': [
         'geosite:category-ads',
@@ -261,12 +261,12 @@ OPT_RULESET_GROUPS['ir']['🛑 Adblock'] = {
     ],
 }
 OPT_RULESET_GROUPS['ir']['☁️ parspack'] = {
-    'default': 'on',
+    'default': 'off',
     'outbound': 'direct_out',
     'rules': ['geoip:parspack'],
 }
 OPT_RULESET_GROUPS['ir']['☁️ arvancloud'] = {
-    'default': 'on',
+    'default': 'off',
     'outbound': 'direct_out',
     'rules': ['geoip:arvancloud'],
 }
