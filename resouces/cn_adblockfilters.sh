@@ -31,10 +31,10 @@ function download_adblockfilters() {
     cd $target_dir/adblockfilters/
     aclssr_dir=$(dirname $work_dir)/ACL4SSR
 
-    file_array=("AdGuard_Base_filter.txt" "AdGuard_Chinese_filter.txt" "AdGuard_DNS_filter.txt" "AdGuard_Mobile_Ads_filter.txt" "adblockclashlite.list" "adblockclash.list")
+    # PASS "AdGuard_Base_filter.txt" "AdGuard_Chinese_filter.txt" "AdGuard_DNS_filter.txt" "AdGuard_Mobile_Ads_filter.txt"
+    file_array=("adblockclashlite.list" "adblockclash.list")
     for file in "${file_array[@]}"; do
-        # --show-progress
-        wget --no-check-certificate -q -T10 -t3 -O $file "https://github.com/217heidai/adblockfilters/raw/refs/heads/main/rules/${file}"
+        wget --no-check-certificate -q --show-progress -T10 -t3 -O $file "https://github.com/217heidai/adblockfilters/raw/refs/heads/main/rules/${file}"
 
         if [[ "$file" == *.list ]]; then
             basename=${file%.list}
@@ -44,7 +44,13 @@ function download_adblockfilters() {
             if [[ "$file" == "adblockclashlite.list" ]]; then
                 # 合并文件
                 cat "${aclssr_dir}/Clash/BanAD.list" > temp_file && cat "$file" >> temp_file
+                # 合并碎片
+                sed -i '/17173.com/d' temp_file
+                cat $CURRENT_DIR/fragment/BanAD.list >> temp_file
+
+                # 去重
                 sort -u temp_file > "$file"
+                exit 1
             fi
 
             #convert to json

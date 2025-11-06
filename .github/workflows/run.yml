@@ -41,6 +41,7 @@ jobs:
           cd sing-rule || exit 1
           wget -q --show-progress https://github.com/SagerNet/sing-box/releases/download/v1.12.12/sing-box-1.12.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.12.12-linux-amd64/sing-box ./
           chmod 755 sing-box
+          ./sing-box version
           bash ../workflow/resouces/convert_srs.sh ./sing-box ./ACL4SSR
           cp ./ACL4SSR/Ruleset/*.srs ./ACL4SSR
 
@@ -62,7 +63,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: hiddify/hiddify-geo
-          path: hiddify-geo
+          path:  vbc-geo
           ref: rule-set
 
       - name: IR copy geo rules
