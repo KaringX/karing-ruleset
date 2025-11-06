@@ -50,7 +50,6 @@ function download_adblockfilters() {
 
                 # 去重
                 sort -u temp_file > "$file"
-                exit 1
             fi
 
             #convert to json
@@ -103,6 +102,27 @@ function merge_hiddify_geo(){
     done
 }
 
+# 替换碎片
+function replace_fragment(){
+    aclssr_dir=$(dirname $target_dir)/ACL4SSR
+    geosite_dir=$(dirname $target_dir)/geo/geosite
+
+    # banad 在 func download_adblockfilters 中已经合并
+
+    # ProxyGFWlist.json
+    cd $aclssr_dir
+    basename="ProxyGFWlist"
+    sed -i 's/"ip138.com",//g' $basename.json
+    echo "replace ==>  $aclssr_dir/$basename.json"
+    $sing_exe rule-set compile $basename.json -o $aclssr_dir.srs
+
+    # geosite cn
+    cd $geosite_dir
+    sed -i '/browserleaks.com/d' "${geosite_dir}/cn.json"
+    echo "replace ==> ${geosite_dir}/cn.json"
+    $sing_exe rule-set compile cn.json -o cn.srs
+
+}
 
 
 # ———————————————————————————————————————————————————————————————————————————————————————————————
@@ -113,6 +133,7 @@ echo "start<= ${target_dir}"
 
 download_adblockfilters
 merge_hiddify_geo
+replace_fragment
 
 echo "end<= ${target_dir}"
 #END FILE
