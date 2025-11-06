@@ -59,8 +59,8 @@ def listdir_format(src_path: str, out_path: str):
 
 def read_rules_from_file(src_file: str) -> dict | None:
     splits = os.path.splitext(src_file)
-    if splits[1] != ".list":
-        # deug_log(f"ERR: only support '.list' {src_file}")
+    if splits[1] not in [".list"]:
+        deug_log(f"ERR: only support list {src_file}")
         return None
     if not os.path.isfile(src_file):
         deug_log(f"ERR: not file {src_file}")

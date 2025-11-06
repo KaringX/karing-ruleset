@@ -39,7 +39,7 @@ jobs:
           NO_SKIP: true
         run: |
           cd sing-rule || exit 1
-          wget -q https://github.com/SagerNet/sing-box/releases/download/v1.10.7/sing-box-1.10.7-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.10.7-linux-amd64/sing-box ./
+          wget -q --show-progress https://github.com/SagerNet/sing-box/releases/download/v1.12.12/sing-box-1.12.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.12.12-linux-amd64/sing-box ./
           chmod 755 sing-box
           bash ../workflow/resouces/convert_srs.sh ./sing-box ./ACL4SSR
           cp ./ACL4SSR/Ruleset/*.srs ./ACL4SSR
@@ -99,12 +99,12 @@ jobs:
           mkdir -p ./sing-rule/recommend
           python workflow/resouces/kr_builtin_ruleset.py ./sing-rule/
 
-#      - name: convert AdGuardSDNSFilter to srs
-#        env:
-#          NO_SKIP: true
-#        run: |
-#          python workflow/resouces/convert_adguard.py ./sing-rule/
-#
+      - name: convert AdGuardSDNSFilter to srs
+        env:
+          NO_SKIP: true
+        run: |
+          python workflow/resouces/convert_adguard.py ./sing-rule/
+
       - name: rm sing-box files
         env:
           NO_SKIP: true
