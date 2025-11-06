@@ -26,17 +26,21 @@ from helper.helper import (
 SING_BOX_EXEC_PATH = None
 
 ADGUARD_CONFIG_FILTER_LIST = [
+    # {
+    #     'name': 'AdGuardFilter',
+    #     'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json',
+    # },
+    # {
+    #     'name': 'PopupFilter',
+    #     'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration_popup_filter.json',
+    # },
+    # {
+    #     'name': 'ppfeuferFilter',
+    #     'source': 'https://raw.githubusercontent.com/ppfeufer/adguard-filter-list/master/hostlist-compiler-config.json',
+    # },
     {
-        'name': 'AdGuardFilter',
-        'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration.json',
-    },
-    {
-        'name': 'PopupFilter',
-        'source': 'https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/configuration_popup_filter.json',
-    },
-    {
-        'name': 'ppfeuferFilter',
-        'source': 'https://raw.githubusercontent.com/ppfeufer/adguard-filter-list/master/hostlist-compiler-config.json',
+        'name': 'HostlistsRegistry',
+        'source': 'https://adguardteam.github.io/HostlistsRegistry/assets/filters.json',
     },
 ]
 
@@ -55,6 +59,7 @@ def converto_srs(out_path: str, file_name: str) -> bool:
     command = (
         f"{sb_exe_path} rule-set convert --type adguard --output {out_file} {src_file}"
     )
+    # debug_log(command)
     result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     # if result.stderr:
@@ -67,6 +72,10 @@ def converto_srs(out_path: str, file_name: str) -> bool:
     debug_log(
         f"Convert code:{result.returncode} error:{error_msg} output:{result.stdout}"
     )
+    if result.returncode == 0:
+        debug_log(f"Convert {os.path.basename(out_file)} success")
+        return True
+
     return True if remove_ansi_escape_codes(error_msg).startswith('INFO') else False
     # END converto_srs
 
@@ -117,12 +126,41 @@ def compile_filterlist(out_path: str, item: dict):
     # sucess list
     succ_path = os.path.join(out_path, f"{name}.list")
     succ_list = []
+    fitems = {}
 
-    json_data = json.loads(content)
-    for filter_item in json_data['sources']:
+    try:
+        # 如果json_data已经是字典，直接使用
+        if isinstance(content, str):
+            data = json.loads(content)
+        else:
+            data = content
+
+        # 判断并赋值
+        if 'sources' in data:
+            fitems = data['sources']
+            debug_log(f"{name} 找到 sources 已赋值给 fitems")
+        elif 'filters' in data:
+            fitems = data['filters']
+            debug_log(f"{name} 找到 filters 已赋值给 fitems")
+        else:
+            raise ValueError(f"{name} JSON数据中既不包含'sources'也不包含'filters'字段")
+
+    except json.JSONDecodeError as e:
+        debug_log(f"JSON解码错误: {e}")
+        return None
+    except ValueError as e:
+        debug_log(f"错误: {e}")
+        return None
+
+    # 解析每一项
+    for filter_item in fitems:
         ret = compile_filterone(out_path2, filter_item)
         if ret is True:
-            succ_list.append(correct_name(filter_item['name']) + '.srs')
+            if 'filterKey' in filter_item:
+                fname = filter_item['filterKey']
+            else:
+                fname = filter_item['name']
+            succ_list.append(correct_name(fname) + '.srs')
 
     # wirte sucess list
     writeto_rulefile(succ_path, "\n".join(succ_list))
@@ -131,11 +169,23 @@ def compile_filterlist(out_path: str, item: dict):
 
 
 def compile_filterone(out_path: str, item: dict) -> bool:
-    source = item['source']
+    if 'downloadUrl' in item:
+        source = item['downloadUrl']
+    else:
+        source = item['source']
     if source in SOURCE_REPLACE_DICT:
         source = SOURCE_REPLACE_DICT[source]
 
-    name = correct_name(item['name'])
+    if 'filterKey' in item:
+        fname = item['filterKey']
+    else:
+        fname = item['name']
+
+    #!TEST
+    # if fname != 'hagezi_ultimate':
+    #     return False
+
+    name = correct_name(fname)
     debug_log(f"\n\tdownloading [ {name} ] => {source}")
     content = get_url_content(source)
     if content is None:
