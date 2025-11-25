@@ -40,6 +40,7 @@ jobs:
         run: |
           cd sing-rule || exit 1
           wget -q --show-progress https://github.com/SagerNet/sing-box/releases/download/v1.12.12/sing-box-1.12.12-linux-amd64.tar.gz -O sing-box.tar.gz && tar zxvf sing-box.tar.gz && mv sing-box-1.12.12-linux-amd64/sing-box ./
+          ls -lha
           chmod 755 sing-box
           ./sing-box version
           bash ../workflow/resouces/convert_srs.sh ./sing-box ./ACL4SSR
