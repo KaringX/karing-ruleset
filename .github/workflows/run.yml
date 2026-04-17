@@ -73,8 +73,8 @@ jobs:
         run: |
           cd sing-rule || exit 1
           mkdir -p ./geo/{geoip,geosite}
-          cp ../hiddify-geo/country/geoip-*.srs ./geo/geoip/ && rename 's/geoip-//' ./geo/geoip/geoip-*.srs
-          cp ../hiddify-geo/country/geosite-*.srs ./geo/geosite/ && rename 's/geosite-//' ./geo/geosite/geosite-*.srs
+          for f in ../hiddify-geo/country/geoip-*.srs; do cp "$f" "./geo/geoip/${f##*/geoip-}"; done
+          for f in ../hiddify-geo/country/geosite-*.srs; do cp "$f" "./geo/geosite/${f##*/geosite-}"; done
 
       - name: IR copy geo rules
         env:
