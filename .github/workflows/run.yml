@@ -64,8 +64,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: hiddify/hiddify-geo
-          path:  vbc-geo
+          path: hiddify-geo
           ref: rule-set
+
+      - name: copy hiddify country rules
+        env:
+          NO_SKIP: true
+        run: |
+          cd sing-rule || exit 1
+          cp ../hiddify-geo/country/geoip-*.srs ./geo/geoip/ && rename 's/geoip-//' ./geo/geoip/geoip-*.srs
+          cp ../hiddify-geo/country/geosite-*.srs ./geo/geosite/ && rename 's/geosite-//' ./geo/geosite/geosite-*.srs
 
       - name: IR copy geo rules
         env:
