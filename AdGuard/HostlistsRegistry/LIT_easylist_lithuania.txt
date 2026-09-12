@@ -1,0 +1,43 @@
+!
+! Title: LIT: EasyList Lithuania
+! Description: This is a (currently pretty small and not much tested) version of EasyList Lithuania designed for use with domains-based tools.
+! Version: 1.0.14.55
+! Homepage: https://github.com/EasyList-Lithuania/easylist_lithuania
+! Last modified: 2026-04-17T10:06:38.457Z
+!
+! Compiled by @adguard/hostlist-compiler v2.1.0
+!
+||ad.admitad.com^
+||adart.hostin.lt^
+||adbox.lt^
+||adclick.lt^
+||ads.one.lt^
+||ads.vmedija.lt^
+||adsplius.lt^
+||adverum.lt^
+||aleja.lt^
+||banners.adnetmedia.lt^
+||banners.igloro.info^
+||bms.creativepartner.lt^
+||darnipora.lt^
+||eads.lt^
+||enlabspartners.com^
+||freewheel-mtgx-tv.akamaized.net^
+||keliones.lt^
+||komi.lt^
+||on-line.lt^
+||peacto.com^
+||plius.lt^
+||prod.one.lt^
+||r-scale-fb.static.go3.tv^
+||revive.imones.lt^
+||rkl.draugas.lt^
+||skaitliukas.eu^
+||skpiramide.lt^
+||static.grupinis.lt^
+||top100.lt^
+||topsport.lt^
+||trackers.adtarget.me^
+||tygafso.com^
+||vswcdns.com^
+||xlixpdhpfpnlor.xyz^

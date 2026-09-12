@@ -1,0 +1,24 @@
+!
+! Title: Dandelion Sprout's Game Console Adblock List
+! Description: List for blocking ads on videogame consoles that use AdGuard Home
+! Version: 1.0.14.55
+! Homepage: https://github.com/DandelionSprout/adfilt
+! Last modified: 2026-04-17T10:06:25.121Z
+!
+! Compiled by @adguard/hostlist-compiler v2.1.0
+!
+||nsx-e.np.dl.playstation.net^
+||mercury.dl.playstation.net^
+||nsx.np.dl.playstation.net^
+||adproxy.ndmdhs.com^
+||arc.msn.com^$ctag=~device_pc|~os_windows
+||rad.msn.com^
+||receive-lp1.dg.srv.nintendo.net
+||realtime-receive-lp1.dg.srv.nintendo.net
+||receive-lp1.er.srv.nintendo.net
+||sprofile-lp1.cdn.nintendo.net
+||telemetry-console.api.playstation.com^
+||telemetry-cii.api.playstation.com^
+||at.atwola.com^
+||nw-umwatson.events.data.microsoft.com^
+*watson.events.data.microsoft.com^
