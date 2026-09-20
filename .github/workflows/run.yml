@@ -13,14 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout scripts
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: KaringX/karing-ruleset
           path: workflow
           ref: workflow
 
       - name: Checkout ACL4SSR
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ACL4SSR/ACL4SSR
           path: ACL4SSR
@@ -47,21 +47,21 @@ jobs:
           cp ./ACL4SSR/Ruleset/*.srs ./ACL4SSR
 
       - name: Checkout meta-rules-dat
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: MetaCubeX/meta-rules-dat
           path: meta-rules-dat
           ref: sing
 
       - name: Checkout Iran-sing-box-rules
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: Chocolate4U/Iran-sing-box-rules
           path: Iran-sing-box-rules
           ref: rule-set
 
       - name: Checkout hiddify-geo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: hiddify/hiddify-geo
           path: hiddify-geo
@@ -91,7 +91,7 @@ jobs:
           bash workflow/resouces/cn_adblockfilters.sh  ./sing-rule
 
       - name: Checkout runetfreedom
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: runetfreedom/russia-v2ray-rules-dat
           path: runetfreedom
