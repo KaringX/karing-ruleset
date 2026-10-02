@@ -1,0 +1,26 @@
+!
+! Title: HaGeZi's DNS Rebind Protection
+! Description: DNS Rebind Protection is a security mechanism that prevents attackers from manipulating DNS responses to make a domain resolve to private or local IP addresses, thereby blocking malicious scripts from accessing internal networks through DNS rebinding attacks.
+! Version: 1.0.0.7
+! Homepage: https://github.com/hagezi/dns-blocklists
+! Last modified: 2026-05-26T13:15:16.644Z
+!
+! Compiled by @adguard/hostlist-compiler v2.1.0
+!
+/^10\.(?:\d{1,3})\.(?:\d{1,3})\.(?:\d{1,3})$/
+/^172\.(?:1[6-9]|2\d|3[0-1])\.(?:\d{1,3})\.(?:\d{1,3})$/
+/^192\.168\.(?:\d{1,3})\.(?:\d{1,3})$/
+/^169\.254\.(?:\d{1,3})\.(?:\d{1,3})$/
+/^127\.(?:\d{1,3})\.(?:\d{1,3})\.(?:\d{1,3})$/
+/^0\.0\.0\.(?:\d{1,3})$/
+/^51\.15\.69\.11$/
+/^146\.112\.61\.108$/
+/^f[cd][0-9a-f]{2}:/
+/^fe80:/
+/^::1$/
+/^::$/
+/^([a-z0-9\-]+\.)?(localhost|localdomain|ip6-localhost)$/
+@@||fritz.box^
+@@||fritz.nas^
+@@||fritz.local^
+@@||dns.msftncsi.com^
