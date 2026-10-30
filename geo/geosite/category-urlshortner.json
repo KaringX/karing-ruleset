@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain_suffix": [
+        "shorturl.at",
+        "tinyurl.com",
+        "bit.ly",
+        "bitly.com",
+        "bitly.is"
+      ]
+    }
+  ]
+}
