@@ -1,0 +1,176 @@
+{
+    "rules": [
+        {
+            "rule_set": [
+                "geosite:category-ads",
+                "geosite:category-ads-ir"
+            ],
+            "outbound": "block",
+            "name": "🛑 Adblock",
+            "switch": true
+        },
+        {
+            "rule_set": [
+                "acl:BanProgramAD",
+                "acl:BanADCompany"
+            ],
+            "outbound": "block",
+            "name": "🍃 AdblockPlus",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:malware",
+                "geoip:malware",
+                "geoip:phishing",
+                "geosite:phishing",
+                "geosite:cryptominers"
+            ],
+            "outbound": "block",
+            "name": "🛑 malware",
+            "switch": true
+        },
+        {
+            "rule_set": [
+                "geosite:bing"
+            ],
+            "outbound": "currentSelected",
+            "name": "Ⓜ️ Bing",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:onedrive"
+            ],
+            "outbound": "direct",
+            "name": "Ⓜ️ OneDrive",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:microsoft",
+                "geosite:microsoft-dev",
+                "geosite:microsoft-pki"
+            ],
+            "outbound": "currentSelected",
+            "name": "Ⓜ️ Microsoft",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:apple",
+                "geosite:apple-dev",
+                "geosite:apple-pki",
+                "geosite:apple-update"
+            ],
+            "outbound": "direct",
+            "name": "🍎 Apple",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:google",
+                "geoip:google"
+            ],
+            "outbound": "currentSelected",
+            "name": "🌏 Google",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:tiktok"
+            ],
+            "outbound": "currentSelected",
+            "name": "🎧 TikTok",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:instagram"
+            ],
+            "outbound": "currentSelected",
+            "name": "📸 Instagram",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geosite:youtube"
+            ],
+            "outbound": "currentSelected",
+            "name": "📹 YouTube",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geoip:netflix",
+                "geosite:netflix"
+            ],
+            "outbound": "currentSelected",
+            "name": "🎥 Netflix",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geoip:telegram",
+                "geosite:telegram"
+            ],
+            "outbound": "currentSelected",
+            "name": "📲 Telegram",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geoip:openai",
+                "geosite:openai"
+            ],
+            "outbound": "currentSelected",
+            "name": "💬 OpenAI",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "acl:Gemini"
+            ],
+            "outbound": "currentSelected",
+            "name": "♊ Gemini",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geoip:github",
+                "geosite:github"
+            ],
+            "outbound": "currentSelected",
+            "name": "🐱 GitHub",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "acl:Epic",
+                "acl:Origin",
+                "acl:Sony",
+                "acl:Steam",
+                "acl:Nintendo"
+            ],
+            "outbound": "currentSelected",
+            "name": "🎮 Game",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geoip:parspack"
+            ],
+            "outbound": "direct",
+            "name": "☁️ parspack",
+            "switch": false
+        },
+        {
+            "rule_set": [
+                "geoip:arvancloud"
+            ],
+            "outbound": "direct",
+            "name": "☁️ arvancloud",
+            "switch": false
+        }
+    ]
+}
